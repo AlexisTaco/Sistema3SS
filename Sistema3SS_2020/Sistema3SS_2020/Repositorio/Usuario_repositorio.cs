@@ -18,16 +18,31 @@ namespace Sistema3SS_2020.Repositorio
                 con.abrirConeccion();
                 SqlDataReader myReader = null;
                 var state = con.conexion.State;
-                string cadena = "select * from USUARIOS where nombre ="+id;
+                string cadena = "select * from USUARIOS where id ="+id.ToString();
                 SqlCommand comando = new SqlCommand(cadena, con.conexion);
                 myReader = comando.ExecuteReader();
                 Usuario usu = new Usuario();
-                myReader.Read();
-                usu.nombre = myReader["nombre"].ToString();
-                usu.contrasena = myReader["contrasena"].ToString();
-                usu.id_tipo = Convert.ToInt32(myReader["id"]);
-                con.CerrarConeccion();
-                return usu;
+                if (myReader.Read())
+                {
+                    usu.nombre = myReader["nombre"].ToString().Trim();
+                    usu.contrasena = myReader["contrasena"].ToString().Trim();
+                    usu.id_tipo = Convert.ToInt32(myReader["id_tipo"].ToString().Trim());
+                    usu.correo_electronico = myReader["correo_electronico"].ToString().Trim();
+                    usu.apellido_materno = myReader["apellido_materno"].ToString().Trim();
+                    usu.apellido_paterno = myReader["apellido_paterno"].ToString().Trim();
+                    usu.direccion = myReader["direccion"].ToString().Trim();
+                    usu.numero_celular = myReader["numero_celular"].ToString().Trim();
+                    usu.fecha_nacimiento = Convert.ToDateTime(myReader["fecha_necimineto"].ToString().Trim());
+                    usu.id_tipo = Convert.ToInt32(myReader["id"]);
+                    usu.activo = Convert.ToBoolean(myReader["activo"]);
+                    con.CerrarConeccion();
+                    return usu;
+                }
+                else
+                {
+                    return null;
+                }
+
             }
             catch (Exception)
             {
@@ -43,16 +58,31 @@ namespace Sistema3SS_2020.Repositorio
                 con.abrirConeccion();
                 SqlDataReader myReader = null;
                 var state = con.conexion.State;
-                string cadena = "select * from USUARIOS where nombre ='"+nombre+"'";
+                string cadena = "select * from USUARIOS where nombre = '" + nombre.ToString()+"'";
                 SqlCommand comando = new SqlCommand(cadena, con.conexion);
                 myReader = comando.ExecuteReader();
                 Usuario usu = new Usuario();
-                myReader.Read();
-                usu.nombre = myReader["nombre"].ToString();
-                usu.contrasena = myReader["contrasena"].ToString();
-                usu.id_tipo = Convert.ToInt32(myReader["id"]);
-                con.CerrarConeccion();
-                return usu;
+                if (myReader.Read())
+                {
+                    usu.nombre = myReader["nombre"].ToString().Trim();
+                    usu.contrasena = myReader["contrasena"].ToString().Trim();
+                    usu.id_tipo = Convert.ToInt32(myReader["id_tipo"].ToString().Trim());
+                    usu.correo_electronico = myReader["correo_electronico"].ToString().Trim();
+                    usu.apellido_materno = myReader["apellido_materno"].ToString().Trim();
+                    usu.apellido_paterno = myReader["apellido_paterno"].ToString().Trim();
+                    usu.direccion = myReader["direccion"].ToString().Trim();
+                    usu.numero_celular = myReader["numero_celular"].ToString().Trim();
+                    usu.fecha_nacimiento = Convert.ToDateTime(myReader["fecha_necimineto"].ToString().Trim());
+                    usu.id_tipo = Convert.ToInt32(myReader["id"]);
+                    usu.activo = Convert.ToBoolean(myReader["activo"]);
+                    con.CerrarConeccion();
+                    return usu;
+                }
+                else
+                {
+                    return null;
+                }
+
             }
             catch (Exception)
             {
@@ -84,7 +114,7 @@ namespace Sistema3SS_2020.Repositorio
             try
             {
                 con.abrirConeccion();
-                string cadena = "update USUARIOS set nombre ='" + usu.nombre + "', apellido_paterno ='" + usu.apellido_paterno + "', apellido_materno ='" + usu.apellido_materno + "', id_tipo =" + usu.id_tipo + ", correo_electronico ='" + usu.correo_electronico + "',', numero_telefono = '" + usu.numero_celular + "', direccion = '" + usu.direccion + "', fecha_nacimiento'" + usu.fecha_nacimiento + "', activo = " + usu.activo + ",'" + usu.contrasena + "' where codigo=" + id;
+                string cadena = "update USUARIOS set nombre ='" + usu.nombre + "', apellido_paterno ='" + usu.apellido_paterno + "', apellido_materno ='" + usu.apellido_materno + "', id_tipo =" + usu.id_tipo + ", correo_electronico ='" + usu.correo_electronico + "',', numero_telefono = '" + usu.numero_celular + "', direccion = '" + usu.direccion + "', fecha_necimineto'" + usu.fecha_nacimiento + "', activo = " + usu.activo + ",'" + usu.contrasena + "' where codigo=" + id;
                 SqlCommand comando = new SqlCommand(cadena, con.conexion);
                 comando.ExecuteNonQuery();
                 return true;

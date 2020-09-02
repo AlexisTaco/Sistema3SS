@@ -46,16 +46,19 @@ namespace Sistema3SS_2020.Controllers
         // GET: UsuarioController/Edit/5
         public ActionResult Edit(int id)
         {
-            return View();
+            var usu =  usuario.ConsultarInfoPorId(id);
+            return View(usu);
         }
 
         // POST: UsuarioController/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
+        public ActionResult Edit(int id, IFormCollection keyValues)
         {
             try
             {
+                var r = keyValues;
+                usuario.actualizar(usuario);
                 return RedirectToAction(nameof(Index));
             }
             catch

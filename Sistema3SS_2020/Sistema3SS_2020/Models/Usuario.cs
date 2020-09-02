@@ -1,4 +1,5 @@
-﻿using Microsoft.VisualBasic;
+﻿using Microsoft.AspNetCore.Http;
+using Microsoft.VisualBasic;
 using Microsoft.VisualBasic.CompilerServices;
 using Sistema3SS_2020.Repositorio;
 using System;
@@ -55,6 +56,22 @@ namespace Sistema3SS_2020.Models
         {
           var list = usuario_Repositorio.MostarLista();
             return list;
+        }
+        public Usuario ConsultarInfoPorId(int id)
+        {
+          var r = usuario_Repositorio.ConsultarPorId(id);
+            if (r != null)
+            {
+                return r;
+            }
+            else
+            {
+                return null;
+            }
+        }
+        public void actualizar(IFormCollection collection)
+        {
+            usuario_Repositorio.Actualizar(usu,usu.id);
         }
 
     }
