@@ -4,15 +4,38 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Sistema3SS_2020.Models;
 
 namespace Sistema3SS_2020.Controllers
 {
     public class LoginController : Controller
     {
+        Coneccion con = new Coneccion();
+        
         // GET: LoginController
         public ActionResult Index()
         {
-            return View();
+
+                return View();
+        }
+
+        public ActionResult Login(string nombre_usuario,string contrasena_usuario)
+        {
+            if (ModelState.IsValid)
+            {
+                Usuario usuario = new Usuario();
+                var relogin = usuario.Iniciar_sesion(nombre_usuario,contrasena_usuario);
+                if (relogin != false)
+                {
+                 return   RedirectToAction("Principal", "Principal");
+
+                }
+                else
+                {
+                    return RedirectToAction("Index", "Principal");
+                }
+            }
+            return RedirectToAction("Index", "Principal");
         }
 
         // GET: LoginController/Details/5
@@ -83,5 +106,6 @@ namespace Sistema3SS_2020.Controllers
                 return View();
             }
         }
+
     }
 }
