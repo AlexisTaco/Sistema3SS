@@ -69,9 +69,15 @@ namespace Sistema3SS_2020.Models
                 return null;
             }
         }
-        public void actualizar(IFormCollection collection)
+        public bool actualizar(Usuario usuario)
         {
-            usuario_Repositorio.Actualizar(usu,usu.id);
+            var res = usuario_Repositorio.Actualizar(usuario,this.id);
+            return res;
+        }
+        public bool Insertar(Usuario usuario) 
+        {
+           var res = usuario_Repositorio.Insertar(usuario);
+            return res;
         }
 
     }

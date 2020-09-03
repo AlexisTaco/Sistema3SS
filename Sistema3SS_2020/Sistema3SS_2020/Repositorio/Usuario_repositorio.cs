@@ -95,16 +95,27 @@ namespace Sistema3SS_2020.Repositorio
         {
             try
             {
+
                 con.abrirConeccion();
-                string cadena = "insert into articulos(nombre,apellido_paterno,apellido_materno,id_tipo,correo_electronico,numero_celular,direccion,fecha_nacimiento,activo,contrasena) values ('" + usu.nombre + "','" + usu.apellido_paterno + "','" + usu.apellido_materno + "'," + usu.id_tipo + ",'" + usu.correo_electronico + "','" + usu.numero_celular + "','" + usu.direccion + "','" + usu.fecha_nacimiento + "'," + usu.activo + ",'" + usu.contrasena + "')";
+                var fechaModify = usu.fecha_nacimiento.ToString("yyyy-MM-dd");
+                int act;
+                if (usu.activo == true)
+                {
+                    act = 1;
+                }
+                else
+                {
+                    act = 0;
+                }
+                string cadena = "insert into USUARIOS(nombre,apellido_paterno,apellido_materno,id_tipo,correo_electronico,numero_celular,direccion,fecha_necimineto,activo,contrasena,id) values ('" + usu.nombre + "','" + usu.apellido_paterno + "','" + usu.apellido_materno + "'," + usu.id_tipo + ",'" + usu.correo_electronico + "','" + usu.numero_celular + "','" + usu.direccion + "'," + fechaModify + "," + act + ",'" + usu.contrasena + "',"+usu.id+")";
                 SqlCommand comando = new SqlCommand(cadena, con.conexion);
                 comando.ExecuteNonQuery();
                 con.conexion.Close();
                 return true;
             }
-            catch (Exception)
+            catch (Exception e)
             {
-
+                var a = e.Message.Trim();
                 return false;
             }
 
@@ -113,15 +124,25 @@ namespace Sistema3SS_2020.Repositorio
         {
             try
             {
+                int act;
                 con.abrirConeccion();
-                string cadena = "update USUARIOS set nombre ='" + usu.nombre + "', apellido_paterno ='" + usu.apellido_paterno + "', apellido_materno ='" + usu.apellido_materno + "', id_tipo =" + usu.id_tipo + ", correo_electronico ='" + usu.correo_electronico + "',', numero_telefono = '" + usu.numero_celular + "', direccion = '" + usu.direccion + "', fecha_necimineto'" + usu.fecha_nacimiento + "', activo = " + usu.activo + ",'" + usu.contrasena + "' where codigo=" + id;
+                var fechaModify = usu.fecha_nacimiento.ToString("yyyy-MM-dd");
+                if (usu.activo == true)
+                {
+                    act = 1;
+                }
+                else
+                {
+                    act = 0;
+                }
+                string cadena = "update USUARIOS set nombre = '" + usu.nombre + "', apellido_paterno = '" + usu.apellido_paterno + "', apellido_materno = '" + usu.apellido_materno + "', id_tipo =" + usu.id_tipo + ", correo_electronico = '" + usu.correo_electronico + "', numero_celular = '" + usu.numero_celular + "', direccion = '" + usu.direccion + "', fecha_necimineto = " + fechaModify + ", activo = " + act + ", contrasena = '" + usu.contrasena + "' where id =" + id;
                 SqlCommand comando = new SqlCommand(cadena, con.conexion);
                 comando.ExecuteNonQuery();
                 return true;
             }
-            catch (Exception)
+            catch (Exception e)
             {
-
+                var a = e.Message.Trim();
                 return false;
             }
         }

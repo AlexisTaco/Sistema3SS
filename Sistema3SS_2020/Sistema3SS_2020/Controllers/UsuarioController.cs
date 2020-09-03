@@ -35,6 +35,11 @@ namespace Sistema3SS_2020.Controllers
         {
             try
             {
+                var usu = OrdenarColeccion(collection);
+                if (usuario.Insertar(usu))
+                {
+                    return RedirectToAction(nameof(Index));
+                }
                 return RedirectToAction(nameof(Index));
             }
             catch
@@ -58,11 +63,17 @@ namespace Sistema3SS_2020.Controllers
             try
             {
                 var r = keyValues;
-                usuario.actualizar(usuario);
+                var UsuOrd = OrdenarColeccion(r);
+                var seActualizo =  usuario.actualizar(UsuOrd);
+                if (seActualizo)
+                {
+                    return RedirectToAction(nameof(Index));
+                }
                 return RedirectToAction(nameof(Index));
             }
-            catch
+            catch(Exception e)
             {
+                var a = e.Message.Trim();
                 return View();
             }
         }
@@ -86,6 +97,33 @@ namespace Sistema3SS_2020.Controllers
             {
                 return View();
             }
+        }
+        private Usuario OrdenarColeccion(IFormCollection collection)
+        {
+            this.usuario.id = Convert.ToInt32(collection["id"]);
+            this.usuario.nombre = collection["nombre"].ToString();
+            this.usuario.apellido_paterno = collection["apellido_paterno"].ToString();
+            this.usuario.apellido_materno = collection["apellido_materno"].ToString();
+            this.usuario.contrasena = collection["contrasena"].ToString();
+            this.usuario.correo_electronico = collection["correo_electronico"].ToString();
+            this.usuario.id_tipo = Convert.ToInt32(collection["id_tipo"]);
+            this.usuario.fecha_nacimiento = Convert.ToDateTime(collection["fecha_nacimiento"].ToString());
+            this.usuario.numero_celular = collection["numero_celular"].ToString();
+            this.usuario.direccion = collection["direccion"].ToString();
+            var act = collection["act"].ToString().Trim(); 
+            if (act == "true")
+            {
+
+                this.usuario.activo = true;
+                return this.usuario;
+            }
+            else
+            {
+                this.usuario.activo = false;
+                return this.usuario;
+            }
+            
+            
         }
     }
 }
