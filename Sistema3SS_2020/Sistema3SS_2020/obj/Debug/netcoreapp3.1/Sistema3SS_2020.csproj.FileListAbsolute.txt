@@ -124,3 +124,6 @@ C:\Users\Edgaro\Desktop\proyectoSistema3SS\Repositorio\Sistema3SS\Sistema3SS_202
 C:\Users\Edgaro\Desktop\proyectoSistema3SS\Repositorio\Sistema3SS\Sistema3SS_2020\Sistema3SS_2020\obj\Debug\netcoreapp3.1\Razor\Views\Usuario\Edit.cshtml.g.cs
 C:\Users\Edgaro\Desktop\proyectoSistema3SS\Repositorio\Sistema3SS\Sistema3SS_2020\Sistema3SS_2020\obj\Debug\netcoreapp3.1\Razor\Views\Usuario\Delete.cshtml.g.cs
 C:\Users\Edgaro\Desktop\proyectoSistema3SS\Repositorio\Sistema3SS\Sistema3SS_2020\Sistema3SS_2020\obj\Debug\netcoreapp3.1\Razor\Views\Principal\Principal.cshtml.g.cs
+C:\Users\Edgaro\Desktop\proyectoSistema3SS\Repositorio\Sistema3SS\Sistema3SS_2020\Sistema3SS_2020\obj\Debug\netcoreapp3.1\Razor\Views\Granja\Index.cshtml.g.cs
+C:\Users\Edgaro\Desktop\proyectoSistema3SS\Repositorio\Sistema3SS\Sistema3SS_2020\Sistema3SS_2020\obj\Debug\netcoreapp3.1\Razor\Views\Granja\Create.cshtml.g.cs
+C:\Users\Edgaro\Desktop\proyectoSistema3SS\Repositorio\Sistema3SS\Sistema3SS_2020\Sistema3SS_2020\obj\Debug\netcoreapp3.1\Razor\Views\Granja\Edit.cshtml.g.cs

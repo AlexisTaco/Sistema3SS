@@ -1,0 +1,59 @@
+﻿@model Sistema3SS_2020.Models.Granja
+
+<h4>Granja</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="id" class="control-label"></label>
+                <input asp-for="id" class="form-control" />
+                <span asp-validation-for="id" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="nombre" class="control-label"></label>
+                <input asp-for="nombre" class="form-control" />
+                <span asp-validation-for="nombre" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ubicacion" class="control-label"></label>
+                <input asp-for="ubicacion" class="form-control" />
+                <span asp-validation-for="ubicacion" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="nombre_responsable" class="control-label"></label>
+                <input asp-for="nombre_responsable" class="form-control" />
+                <span asp-validation-for="nombre_responsable" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="apellido_paterno_responsable" class="control-label"></label>
+                <input asp-for="apellido_paterno_responsable" class="form-control" />
+                <span asp-validation-for="apellido_paterno_responsable" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="apellido_materno_responsable" class="control-label"></label>
+                <input asp-for="apellido_materno_responsable" class="form-control" />
+                <span asp-validation-for="apellido_materno_responsable" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="numero_estanques" class="control-label"></label>
+                <input asp-for="numero_estanques" class="form-control" />
+                <span asp-validation-for="numero_estanques" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="perimetro_hetareas" class="control-label"></label>
+                <input asp-for="perimetro_hetareas" class="form-control" />
+                <span asp-validation-for="perimetro_hetareas" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
