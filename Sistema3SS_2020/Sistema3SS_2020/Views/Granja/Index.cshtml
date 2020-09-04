@@ -1,0 +1,59 @@
+﻿@model IEnumerable<Sistema3SS_2020.Models.Granja>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.nombre)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ubicacion)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.nombre_completo_responsable)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.numero_estanques)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.perimetro_hetareas)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.nombre)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ubicacion)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.nombre_completo_responsable)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.numero_estanques)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.perimetro_hetareas)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { item.id}) |
+                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
