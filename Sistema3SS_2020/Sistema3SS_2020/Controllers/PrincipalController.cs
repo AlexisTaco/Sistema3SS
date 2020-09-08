@@ -11,6 +11,10 @@ namespace Sistema3SS_2020.Controllers
     public class PrincipalController : Controller
     {
         // GET: PrincipalController
+        public ActionResult Presupuesto()
+        {
+            return View();
+        }
         public ActionResult Principal()
         {
             return View();
