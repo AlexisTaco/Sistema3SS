@@ -39,7 +39,6 @@ namespace Sistema3SS_2020.Repositorio
             var list = myData.ToList(); // For if you really need a List and not IEnumerable
             return list;
         }
-
         internal Granja ConsultarPorId(int id)
         {
             try
