@@ -36,6 +36,12 @@
             -ms-user-select: none;
             user-select: none;
         }
+        input[type=checkbox] {
+            transform: scale(1.5);
+        }
+        #lbGenerateJs {
+            transform: scale(1.5);
+        }
     </style>
     <!-- Custom styles for this template -->
     <script src="~/js/Presupuesto.js"></script>
@@ -53,10 +59,10 @@
             <div class="col-4 mb-4">
                 <div class="col-10 mb-0">
                     <label for="country">Presupuesto</label>
-                    <select class="custom-select d-block w-100" id="country" required="">
-                        <option value="">Tipo...</option>
-                        <option>Economico</option>
-                        <option>Produccion</option>
+                    <select onchange="SecuenciaDeCambios();" class="custom-select d-block w-100" id="TipoPres" name="TipoPres" required="">
+                        <option value="0">Tipo...</option>
+                        <option value="1">Economico</option>
+                        <option value="2">Produccion</option>
                     </select>
                     <div class="invalid-feedback">
                         Por favor de selccionar un elemnto valido
@@ -66,8 +72,8 @@
             <div class="col-4 ">
                 <div class="col-10 mb-0">
                     <label for="state">Granja</label>
-                    <select onchange="jsFuncionNumeroEstanques();" name="SelectGranja" class="custom-select d-block w-100" id="SelectGranja" runat="server">
-                        <option value="">Nombre...</option>
+                    <select disabled onchange="jsFuncionNumeroEstanques();" name="SelectGranja" class="custom-select d-block w-100" id="SelectGranja" runat="server">
+                        <option value="0">Nombre...</option>
                         @foreach (var granja in Model)
                         {
                             <option value="@granja.numero_estanques">@granja.nombre</option>
@@ -81,10 +87,10 @@
             <div class="col-4 ">
                 <div class="col-10 mb-0">
                     <label for="state">Concepción</label>
-                    <select onchange="jsFuncion();" name="SelectConcepcion" class="custom-select d-block w-100" id="SelectConcepcion">
-                        <option value="">Selecionar...</option>
-                        <option>Granja en general</option>
-                        <option>Estanque unico</option>
+                    <select disabled onchange="jsFuncionNumeroEstanques();" name="SelectConcepcion" class="custom-select d-block w-100" id="SelectConcepcion">
+                        <option value="0">Selecionar...</option>
+                        <option value="3">Granja en general</option>
+                        <option value="2">Estanque unico</option>
                         <option value="1">Multiples estanques</option>
                     </select>
                     <div class="invalid-feedback">
@@ -93,13 +99,19 @@
                 </div>
             </div>
             <div class="col-4">
-                <div class="col-10 mb-0">
-                    <label for="state">Selecion estanques</label>
-                    <select disabled name="Selectestanquest" class="custom-select d-block w-100" id="Selectestanques">
+                <div  class="col-10 mb-0" id="Est1">
+                    <label for="state">Selecion estanque</label>
+                    <select disabled onc name="Selectestanquest" class="custom-select d-block w-100" id="Selectestanquest">
                         <option value="">Numero...</option>
                     </select>
                     <div class="invalid-feedback">
                         Por favor de selccionar un elemnto valido
+                    </div>
+                </div>
+                <div  class="col-10 mb-0" id="Est2">
+                    <label for="state">Selecion estanques</label>
+                    <div class="container" id="checkboxes">
+
                     </div>
                 </div>
             </div>
