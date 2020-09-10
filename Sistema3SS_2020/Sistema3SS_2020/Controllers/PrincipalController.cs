@@ -13,7 +13,8 @@ namespace Sistema3SS_2020.Controllers
         // GET: PrincipalController
         public ActionResult Presupuesto()
         {
-            return View();
+            Granja granja = new Granja();
+            return View(granja.MostrarLista());
         }
         public ActionResult Principal()
         {
