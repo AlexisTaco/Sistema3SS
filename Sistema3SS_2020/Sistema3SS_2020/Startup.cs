@@ -15,6 +15,7 @@ namespace Sistema3SS_2020
     {
         public Startup(IConfiguration configuration)
         {
+            
             Configuration = configuration;
         }
 
@@ -24,11 +25,18 @@ namespace Sistema3SS_2020
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
+            services.AddDistributedMemoryCache(); //This way ASP.NET Core will use a Memory Cache to store session variables
+            services.AddSession(options =>
+            {
+                options.IdleTimeout = TimeSpan.FromDays(1); // It depends on user requirements.
+                options.Cookie.Name = ".My.Session"; // Give a cookie name for session which will be visible in request payloads.
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
+            app.UseSession();
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();

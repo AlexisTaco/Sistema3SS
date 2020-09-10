@@ -5,12 +5,11 @@ using System.Threading.Tasks;
 
 namespace Sistema3SS_2020.Models
 {
-    public class Presupuesto
+    public class Detalle_proyecto
     {
         public int id { get; set; }
-        public int Tipo { get; set; }
-        public int idGasto { get; set; }
-        public double total_presupuesto { get; set; }
-
+        public int idProyecto { get; set; }
+        public int idTemporada { get; set; }
+        public int idPresupuesto { get; set; }
     }
 }

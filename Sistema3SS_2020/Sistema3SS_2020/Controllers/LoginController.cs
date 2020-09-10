@@ -27,7 +27,9 @@ namespace Sistema3SS_2020.Controllers
                 var relogin = usuario.Iniciar_sesion(nombre_usuario,contrasena_usuario);
                 if (relogin != false)
                 {
-                 return   RedirectToAction("Principal", "Principal");
+                    HttpContext.Session.SetString("NombreUsuario",nombre_usuario);
+                    HttpContext.Session.SetString("ContrasenaUsuario", contrasena_usuario);
+                    return   RedirectToAction("Principal", "Principal");
 
                 }
                 else

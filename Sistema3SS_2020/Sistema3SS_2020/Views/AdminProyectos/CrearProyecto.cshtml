@@ -1,0 +1,71 @@
+﻿@model Sistema3SS_2020.Models.Proyecto
+<html>
+<head>
+    <script src="~/js/Proyecto.js"></script>
+</head>
+<body>
+    <h4>Proyecto</h4>
+    <hr />
+    <div class="flex-row">
+        <div class="col-md-10">
+            <form asp-action="Create">
+                <div class="col-md-3">
+                    <label asp-for="id" class="control-label"></label>
+                    <input asp-for="id" class="form-control" />
+                    <span asp-validation-for="id" class="text-danger"></span>
+                </div>
+                <div class="col-md-5">
+                    <label asp-for="fecha_incial" class="control-label"></label>
+                    <input asp-for="fecha_incial" class="form-control" />
+                    <span asp-validation-for="fecha_incial" class="text-danger"></span>
+                </div>
+                <div class="col-md-5">
+                    <label asp-for="fecha_final" class="control-label"></label>
+                    <input asp-for="fecha_final" class="form-control" />
+                    <span asp-validation-for="fecha_final" class="text-danger"></span>
+                </div>
+                <div class="col-md-7">
+                    <label asp-for="idUsuarioAutoriso" class="control-label"></label>
+                    <input asp-for="idUsuarioAutoriso" class="form-control" />
+                    <span asp-validation-for="idUsuarioAutoriso" class="text-danger"></span>
+                </div>
+                <div class="col-md-7">
+                    <label class="control-label">Granjas</label>
+                    <select onchange="AgregarGranja();" name="SelectGranja" class="custom-select d-block w-100" id="SelectGranja" runat="server">
+                        <option value="0">Nombre...</option>
+                        @foreach (var granja in Model.granjas)
+                        {
+                            <option value="@granja.id">@granja.nombre</option>
+                        }
+                    </select>
+                    <div>
+                        <label>Granjas añadidas</label>
+                        <div id="DivSelectGranja" class="container">
+
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label"> Temporada</label>
+                    <select  name="SelectTempo" class="custom-select d-block w-100" id="SelectTempo" runat="server">
+                        <option value="0">Nombre...</option>
+                        @foreach (var tempo in Model.temporadas)
+                        {
+                            <option value="@tempo.id">@tempo.fecha_inicial - @tempo.fecha_final</option>
+                        }
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <input onclick="RecopilarDatos();" type="submit" value="Create" class="btn btn-primary" />
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div>
+        <a asp-action="Index">Back to List</a>
+    </div>
+
+</body>
+</html>

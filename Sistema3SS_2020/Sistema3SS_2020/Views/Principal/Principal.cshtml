@@ -6,12 +6,12 @@
 <nav class="navbar navbar-default navbar-static">
     <div class="navbar-header">
 		<button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".js-navbar-collapse">
-			<span class="sr-only">Toggle navigation</span>
+            <span class="sr-only"></span>
 			<span class="icon-bar"></span>
 			<span class="icon-bar"></span>
 			<span class="icon-bar"></span>
 		</button>
-		<a class="navbar-brand" href="#">Large Dropdown Menu</a>
+        <a class="navbar-brand" href="#">Bienvenido @ViewBag.UserLogin </a>
 	</div>
 	
 	
@@ -40,18 +40,10 @@
                         </ul>
 					</li>
 					<li class="col-sm-3">
-						<ul>
-							<li class="dropdown-header">Navbar</li>
-							<li><a href="#">Default navbar</a></li>
-							<li><a href="#">Buttons</a></li>
-							<li><a href="#">Text</a></li>
-							<li><a href="#">Non-nav links</a></li>
-							<li><a href="#">Component alignment</a></li>
-							<li><a href="#">Fixed to top</a></li>
-							<li><a href="#">Fixed to bottom</a></li>
-							<li><a href="#">Static top</a></li>
-							<li><a href="#">Inverted navbar</a></li>
-						</ul>
+                        <ul>
+                            <li class="dropdown-header">Proyectos</li>
+                            <li><button onclick="location.href='@Url.Action("Index", "AdminProyectos")'">Ver lista</button></li>
+                        </ul>s
 					</li>
 				</ul>
 				

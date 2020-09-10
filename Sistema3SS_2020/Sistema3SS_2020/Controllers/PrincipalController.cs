@@ -18,6 +18,7 @@ namespace Sistema3SS_2020.Controllers
         }
         public ActionResult Principal()
         {
+            ViewBag.UserLogin = HttpContext.Session.GetString("NombreUsuario");
             return View();
         }
 
