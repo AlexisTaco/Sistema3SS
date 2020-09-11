@@ -15,6 +15,12 @@ namespace Sistema3SS_2020.Models
         public int idUsuarioAutoriso { get; set; }
         public List<Granja> granjas { get; set; }
         public List<Temporadas> temporadas { get; set; }
+
+        internal bool ResgistrarDetalle(int idDetalle, int id, int idTemporada)
+        {
+            throw new NotImplementedException();
+        }
+
         public List<int> Estanques { get; set; }
 
         public bool Insertar(Proyecto proyecto) 
@@ -22,6 +28,9 @@ namespace Sistema3SS_2020.Models
            var pro = proyectos_Repositorio.Insertar(proyecto);
             return pro;
         }
+
+
+
 
 
 

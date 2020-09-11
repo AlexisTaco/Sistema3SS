@@ -11,5 +11,10 @@ namespace Sistema3SS_2020.Models
         public int idProyecto { get; set; }
         public int idGranja { get; set; }
         public int numeroEstanque { get; set; }
+
+        internal int AsignarId()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

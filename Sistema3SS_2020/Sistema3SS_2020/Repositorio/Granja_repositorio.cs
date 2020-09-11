@@ -75,6 +75,43 @@ namespace Sistema3SS_2020.Repositorio
                 throw;
             }
         }
+        internal Granja ConsultarPorNombre(String nombre)
+        {
+            try
+            {
+                con.abrirConeccion();
+                SqlDataReader myReader = null;
+                var state = con.conexion.State;
+                string cadena = "select * from GRANJAS where nombre =" + nombre.ToString();
+                SqlCommand comando = new SqlCommand(cadena, con.conexion);
+                myReader = comando.ExecuteReader();
+                Granja gran = new Granja();
+                if (myReader.Read())
+                {
+                    gran.id = Convert.ToInt32(myReader["id"].ToString().Trim());
+                    gran.nombre = myReader["nombre"].ToString().Trim();
+                    gran.ubicacion = myReader["ubicacion"].ToString().Trim();
+                    gran.nombre_responsable = myReader["nombre_responsable"].ToString().Trim();
+                    gran.apellido_paterno_responsable = myReader["apellido_paterno_responsable"].ToString().Trim();
+                    gran.apellido_materno_responsable = myReader["apellido_materno_responsable"].ToString().Trim();
+                    gran.numero_estanques = Convert.ToInt32(myReader["numero_estanques"].ToString().Trim());
+                    gran.perimetro_hetareas = Convert.ToDouble(myReader["perimetro_hectareas"].ToString().Trim());
+                    con.CerrarConeccion();
+                    return gran;
+                }
+                else
+                {
+                    return null;
+                }
+
+            }
+            catch (Exception e)
+            {
+                var a = e.Message;
+                throw;
+            }
+        }
+
 
         public bool Insertar(Granja gran) 
         {

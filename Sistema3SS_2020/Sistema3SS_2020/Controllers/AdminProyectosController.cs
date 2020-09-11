@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -11,13 +12,13 @@ namespace Sistema3SS_2020.Controllers
     public class AdminProyectosController : Controller
     {
         Proyecto proyecto = new Proyecto();
+        Granja granja = new Granja();
         public ActionResult CrearProyecto()
         {
 
             try
             {
                 Temporadas temporadas = new Temporadas();
-                Granja granja = new Granja();
                 Proyecto proyecto = new Proyecto();
                 proyecto.granjas = granja.MostrarLista();
                 proyecto.temporadas = temporadas.BuascarTemporadas();
@@ -51,11 +52,7 @@ namespace Sistema3SS_2020.Controllers
         {
             try
             {
-                var proyect = OrdenarColeccionProyecto(collection);
-                if (proyect.Insertar(proyect))
-                {
 
-                }
                 return View();
             }
             catch (Exception e)
@@ -69,8 +66,10 @@ namespace Sistema3SS_2020.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create(IFormCollection collection)
         {
+            CrearProyecto(collection);
             try
             {
+                
                 return RedirectToAction(nameof(Index));
             }
             catch
@@ -120,15 +119,26 @@ namespace Sistema3SS_2020.Controllers
                 return View();
             }
         }
-        private Proyecto OrdenarColeccionProyecto(IFormCollection collection)
+        private List<string> ListaNombresGranja(IFormCollection collectionForm) 
         {
-            this.proyecto.id = Convert.ToInt32(collection["id"]);
-            this.proyecto.fecha_incial = Convert.ToDateTime(collection["nombre"].ToString());
-            this.proyecto.fecha_final = Convert.ToDateTime(collection["ubicacion"].ToString());
-            this.proyecto.idUsuarioAutoriso = Convert.ToInt32(collection["nombre_responsable"].ToString());
-            return proyecto;
-
-
+            proyecto.granjas = granja.MostrarLista();
+            List<string> ListaNombres = new List<string>();
+                foreach (var granja in this.proyecto.granjas)
+                {
+                    string a = collectionForm[granja.nombre.ToString().Trim()];
+                    if (a != null)
+                    {
+                       ListaNombres.Add(a);
+                    }
+                }
+            return ListaNombres;
         }
+        private void SepararFecha(string TemporadaCompleta)
+        {
+            string[] Fechas = TemporadaCompleta.Split("-");
+            proyecto.fecha_incial = Convert.ToDateTime(Fechas[1]);
+            proyecto.fecha_final = Convert.ToDateTime(Fechas[2]);
+        }
+
     }
 }

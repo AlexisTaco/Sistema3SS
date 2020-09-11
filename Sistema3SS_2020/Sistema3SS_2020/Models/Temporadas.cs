@@ -16,5 +16,9 @@ namespace Sistema3SS_2020.Models
         {
             return proyectos_Repositorio.BuscarTemporadas();
         }
+        public Temporadas BuscarTemporadaPorFechas(DateTime f1,DateTime f2) 
+        {
+            return proyectos_Repositorio.BuscarIdTemporadaPorfechas(f1,f2);
+        }
     }
 }

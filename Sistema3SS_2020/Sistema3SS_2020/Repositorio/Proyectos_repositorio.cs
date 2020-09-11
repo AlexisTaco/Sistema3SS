@@ -11,7 +11,6 @@ namespace Sistema3SS_2020.Repositorio
     public class Proyectos_repositorio
     {
         Coneccion con = new Coneccion();
-        Proyecto proyecto = new Proyecto();
         public List<Temporadas> BuscarTemporadas() 
         {
             try
@@ -35,6 +34,34 @@ namespace Sistema3SS_2020.Repositorio
                 );
                 var list = myData.ToList(); // For if you really need a List and not IEnumerable
                 return list;
+            }
+            catch (Exception e)
+            {
+                var a = e.Message;
+                return null;
+            }
+
+
+        }
+        public Temporadas BuscarIdTemporadaPorfechas(DateTime fechaIni, DateTime fechaFin)
+        {
+            try
+            {
+                SqlCommand cmd = new SqlCommand();
+                DataSet ds = new DataSet();
+                SqlDataAdapter sqlDA;
+                cmd.Connection = con.conexion;
+                cmd.CommandText = "select * from TEMPORADAS where fecha_inicial = " + fechaIni  + "and fecha_final ="+fechaFin+"";
+                cmd.CommandType = CommandType.Text;
+                sqlDA = new SqlDataAdapter(cmd);
+                sqlDA.Fill(ds);
+                var myData = ds.Tables[0].AsEnumerable().Select(r => new Temporadas
+                {
+                    id = r.Field<int>("id")
+                }
+
+                );
+                return myData.FirstOrDefault(); // For if you really need a List and not IEnumerable
             }
             catch (Exception e)
             {

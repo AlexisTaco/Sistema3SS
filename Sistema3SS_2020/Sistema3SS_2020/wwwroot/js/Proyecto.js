@@ -3,17 +3,21 @@ function AgregarGranja() {
     console.log("Se desencadeno seleccionar granja");
     var SelectGranja = document.getElementById("SelectGranja");
     var NombreGranja = SelectGranja.options[SelectGranja.selectedIndex].text;
-    var ValidarNombre = document.getElementById(NombreGranja);
+    var IdGranja = SelectGranja.options[SelectGranja.selectedIndex].value;
+    var ValidarNombre = document.getElementById(IdGranja);
     if (ValidarNombre == null) {
         var divConteinerGranjas = document.getElementById("DivSelectGranja");
         if (NombreGranja != null) {
-            var ButtonNombreGran = document.createElement("button");
-            ButtonNombreGran.id = NombreGranja;
-            ButtonNombreGran.type = "button";
+            var ButtonNombreGran = document.createElement("input");
+            ButtonNombreGran.id = IdGranja;
+            ButtonNombreGran.className = "form-control";
+            ButtonNombreGran.type = "text";
+            ButtonNombreGran.readOnly = true;
+            ButtonNombreGran.name = NombreGranja;
             
-            var funtionNmae = "BorrarGranja(" +"'"+ NombreGranja +"'"+ ");";
-            ButtonNombreGran.setAttribute("onclick",funtionNmae);
-            ButtonNombreGran.textContent = (NombreGranja);
+            var funtionNmae = "BorrarGranja(" + "'" + IdGranja +"'"+ ");";
+            ButtonNombreGran.setAttribute("onclick", funtionNmae);
+            ButtonNombreGran.value = (NombreGranja);
             divConteinerGranjas.appendChild(ButtonNombreGran);
         }
     } else {
@@ -27,13 +31,3 @@ function BorrarGranja(NombreGranja) {
     padre = boton.parentNode;
     padre.removeChild(boton);
 };
-function RecopilarDatos()
-{
-    var customer = { contact_name: "Scott", company_name: "HP" };
-    $.ajax({
-        type: "POST",
-        data: JSON.stringify(customer),
-        url: "api/Customer",
-        contentType: "application/json"
-    });
-}
