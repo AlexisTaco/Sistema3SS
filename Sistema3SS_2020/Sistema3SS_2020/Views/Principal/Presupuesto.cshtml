@@ -1,4 +1,4 @@
-﻿@model IEnumerable<Sistema3SS_2020.Models.Granja>
+﻿@model Proyecto
 
 <html lang="en">
 <head>
@@ -74,7 +74,7 @@
                     <label for="state">Granja</label>
                     <select disabled onchange="jsFuncionNumeroEstanques();" name="SelectGranja" class="custom-select d-block w-100" id="SelectGranja" runat="server">
                         <option value="0">Nombre...</option>
-                        @foreach (var granja in Model)
+                        @foreach (var granja in Model.granjas)
                         {
                             <option value="@granja.numero_estanques">@granja.nombre</option>
                         }

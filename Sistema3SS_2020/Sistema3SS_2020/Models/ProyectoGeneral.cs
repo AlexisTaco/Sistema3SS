@@ -12,18 +12,22 @@ namespace Sistema3SS_2020.Models
         Detalle_granja detalle_Granja = new Detalle_granja();
         Proyecto Proyecto = new Proyecto();
         Detalle_proyecto Detalle_Proyecto = new Detalle_proyecto();
-        public bool CrearProyecto(Proyecto Datosproyecto, List<string>ListNombreGranjas, DateTime f1,DateTime f2)
+        Usuario usuario = new Usuario();
+        public bool CrearProyecto(string nombreusu, string contrasenausu,Proyecto Datosproyecto, List<string>ListNombreGranjas,int idTemporada)
         {
             try
             {
-                int IdDetalle = Detalle_Proyecto.AsignarId();
+                var usu = usuario.ConsultarInfoPorNombreycontrasena(nombreusu, contrasenausu);
+                Datosproyecto.idUsuarioAutoriso = usu.id;
+                Datosproyecto.id = Proyecto.AsignarId();
                 if (Proyecto.Insertar(Datosproyecto))
                 {
-
-                    if (Proyecto.ResgistrarDetalle(IdDetalle, Proyecto.id, BuscarIdPorTemporadaCompleta(f1,f2)))
+                    Detalle_Proyecto.id = Detalle_Proyecto.AsignarId();
+                    Detalle_Proyecto.idTemporada = idTemporada;
+                    Detalle_Proyecto.idProyecto = Datosproyecto.id;
+                    if (Proyecto.ResgistrarDetalle(Detalle_Proyecto))
                     {
-                        int idDetalleGranja = detalle_Granja.AsignarId();
-                        if (Detalle_Proyecto.RegistrarDetalleGranja(idDetalleGranja, IdDetalle, HacerListaDeIDsPorNombre(ListNombreGranjas)))
+                        if (detalle_Granja.Registrar(Detalle_Proyecto.id, HacerListaDeIDsPorNombre(ListNombreGranjas)))
                         {
 
                             return true;

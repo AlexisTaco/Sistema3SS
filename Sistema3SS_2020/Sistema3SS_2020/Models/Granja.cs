@@ -16,6 +16,10 @@ namespace Sistema3SS_2020.Models
         public string nombre_responsable { get; set; }
         public string apellido_paterno_responsable  { get; set; }
         public string apellido_materno_responsable { get; set; }
+
+
+
+
         public int numero_estanques { get; set; }
         public double perimetro_hetareas { get; set; }
 

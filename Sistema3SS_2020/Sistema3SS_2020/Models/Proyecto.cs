@@ -8,6 +8,8 @@ namespace Sistema3SS_2020.Models
 {
     public class Proyecto
     {
+        Granja granja = new Granja();
+        Detalle_granja detalle_Granja = new Detalle_granja();
         Proyectos_repositorio proyectos_Repositorio = new Proyectos_repositorio();
         public int id { get; set; }
         public DateTime fecha_incial { get; set; }
@@ -15,10 +17,19 @@ namespace Sistema3SS_2020.Models
         public int idUsuarioAutoriso { get; set; }
         public List<Granja> granjas { get; set; }
         public List<Temporadas> temporadas { get; set; }
-
-        internal bool ResgistrarDetalle(int idDetalle, int id, int idTemporada)
+        public Detalle_proyecto detalle { get; set; }
+        internal bool ResgistrarDetalle(Detalle_proyecto detalle_Proyecto)
         {
-            throw new NotImplementedException();
+
+            if (proyectos_Repositorio.InsertarDetalle(detalle_Proyecto))
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+
         }
 
         public List<int> Estanques { get; set; }
@@ -27,6 +38,24 @@ namespace Sistema3SS_2020.Models
         {
            var pro = proyectos_Repositorio.Insertar(proyecto);
             return pro;
+        }
+        internal int AsignarId()
+        {
+            var id = proyectos_Repositorio.AsignarId();
+            return id;
+        }
+        public List<Proyecto> MostrarLista()
+        {
+            var list = proyectos_Repositorio.MostarLista();
+            return list;
+        }
+        public void BuscarDetallePorId(int idProyecto) 
+        {
+            detalle = proyectos_Repositorio.BuscarDetallePorIdPoryecto(idProyecto);
+        }
+        public void BuscarGranjasEnProyecto(int idProyecto) 
+        {
+            this.granjas = detalle_Granja.BuscarIdsGranjasPorIDproyecto(idProyecto);
         }
 
 

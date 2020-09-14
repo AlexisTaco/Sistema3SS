@@ -33,8 +33,9 @@ namespace Sistema3SS_2020.Controllers
         // GET: AdminProyectos
         public ActionResult Index()
         {
-            return View();
+            return View(proyecto.MostrarLista());
         }
+
 
         // GET: AdminProyectos/Details/5
         public ActionResult Details(int id)
@@ -48,12 +49,14 @@ namespace Sistema3SS_2020.Controllers
             return View();
         }
         [HttpPost]
-        public ActionResult CrearProyecto(IFormCollection collection)
+        public void CrearProyecto(IFormCollection collection)
         {
             try
             {
-
-                return View();
+                ProyectoGeneral proyectoGeneral = new ProyectoGeneral();
+                var usuname = HttpContext.Session.GetString("NombreUsuario");
+                var usucont = HttpContext.Session.GetString("ContrasenaUsuario");
+                var res = proyectoGeneral.CrearProyecto(usuname, usucont,proyecto, ListaNombresGranja(collection),Convert.ToInt32(collection["SelectTempo"]));
             }
             catch (Exception e)
             {
@@ -68,9 +71,20 @@ namespace Sistema3SS_2020.Controllers
         {
             CrearProyecto(collection);
             try
-            {
-                
+            { 
                 return RedirectToAction(nameof(Index));
+            }
+            catch
+            {
+                return View();
+            }
+        }
+        public ActionResult EnviarInfoPresupesto(int id)
+        {
+
+            try
+            {
+                return RedirectToAction("crearPresupuesto", "Principal",new {id});
             }
             catch
             {
@@ -100,9 +114,9 @@ namespace Sistema3SS_2020.Controllers
         }
 
         // GET: AdminProyectos/Delete/5
-        public ActionResult Delete(int id)
+        public ActionResult Presupuesto()
         {
-            return View();
+            return RedirectToAction("Presupuesto", "Principal");
         }
 
         // POST: AdminProyectos/Delete/5
@@ -133,11 +147,13 @@ namespace Sistema3SS_2020.Controllers
                 }
             return ListaNombres;
         }
-        private void SepararFecha(string TemporadaCompleta)
+        private Proyecto SepararFecha(string TemporadaCompleta)
         {
+            Proyecto proyectoFech = new Proyecto();
             string[] Fechas = TemporadaCompleta.Split("-");
-            proyecto.fecha_incial = Convert.ToDateTime(Fechas[1]);
-            proyecto.fecha_final = Convert.ToDateTime(Fechas[2]);
+            proyectoFech.fecha_incial = Convert.ToDateTime(Fechas[1]);
+            proyectoFech.fecha_final = Convert.ToDateTime(Fechas[2]);
+            return proyectoFech;
         }
 
     }

@@ -10,8 +10,8 @@
         <div class="col-md-10">
             <form asp-action="Create">
                 <div class="col-md-3">
-                    <label asp-for="id" class="control-label"></label>
-                    <input asp-for="id" class="form-control" />
+                    <label hidden asp-for="id" class="control-label"></label>
+                    <input hidden asp-for="id" class="form-control" />
                     <span asp-validation-for="id" class="text-danger"></span>
                 </div>
                 <div class="col-md-5">
@@ -25,8 +25,8 @@
                     <span asp-validation-for="fecha_final" class="text-danger"></span>
                 </div>
                 <div class="col-md-7">
-                    <label asp-for="idUsuarioAutoriso" class="control-label"></label>
-                    <input asp-for="idUsuarioAutoriso" class="form-control" />
+                    <label hidden asp-for="idUsuarioAutoriso" class="control-label"></label>
+                    <input hidden asp-for="idUsuarioAutoriso" class="form-control" />
                     <span asp-validation-for="idUsuarioAutoriso" class="text-danger"></span>
                 </div>
                 <div class="col-md-7">

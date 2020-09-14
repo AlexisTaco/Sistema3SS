@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Sistema3SS_2020.Repositorio;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -7,6 +8,8 @@ namespace Sistema3SS_2020.Models
 {
     public class Detalle_proyecto
     {
+        Proyectos_repositorio proyectos_Repositorio = new Proyectos_repositorio();
+        Granja granja = new Granja();
         public int id { get; set; }
         public int idProyecto { get; set; }
         public int idTemporada { get; set; }
@@ -14,12 +17,9 @@ namespace Sistema3SS_2020.Models
 
         internal int AsignarId()
         {
-            throw new NotImplementedException();
-        }
+            var id =  proyectos_Repositorio.AsignarIdDetalle();
+            return id;
 
-        internal bool RegistrarDetalleGranja(int idDetalleGranja, int idDetalle, List<int> idsGranjas)
-        {
-            throw new NotImplementedException();
         }
     }
 }

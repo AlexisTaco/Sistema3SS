@@ -131,3 +131,4 @@ C:\Users\Edgaro\Desktop\proyectoSistema3SS\Repositorio\Sistema3SS\Sistema3SS_202
 C:\Users\Edgaro\Desktop\proyectoSistema3SS\Repositorio\Sistema3SS\Sistema3SS_2020\Sistema3SS_2020\obj\Debug\netcoreapp3.1\Sistema3SS_2020.MvcApplicationPartsAssemblyInfo.cache
 C:\Users\Edgaro\Desktop\proyectoSistema3SS\Repositorio\Sistema3SS\Sistema3SS_2020\Sistema3SS_2020\obj\Debug\netcoreapp3.1\Razor\Views\AdminProyectos\CrearProyecto.cshtml.g.cs
 C:\Users\Edgaro\Desktop\proyectoSistema3SS\Repositorio\Sistema3SS\Sistema3SS_2020\Sistema3SS_2020\obj\Debug\netcoreapp3.1\Sistema3SS_2020.csprojAssemblyReference.cache
+C:\Users\Edgaro\Desktop\proyectoSistema3SS\Repositorio\Sistema3SS\Sistema3SS_2020\Sistema3SS_2020\obj\Debug\netcoreapp3.1\Razor\Views\AdminProyectos\Index.cshtml.g.cs
