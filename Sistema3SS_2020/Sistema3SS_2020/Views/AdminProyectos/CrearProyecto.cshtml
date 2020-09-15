@@ -9,12 +9,12 @@
     <div class="flex-row">
         <div class="col-md-10">
             <form asp-action="Create">
-                <div class="col-md-3">
+                <div class="active col-md-3">
                     <label hidden asp-for="id" class="control-label"></label>
                     <input hidden asp-for="id" class="form-control" />
                     <span asp-validation-for="id" class="text-danger"></span>
                 </div>
-                <div class="col-md-5">
+                <div class="active col-md-5">
                     <label asp-for="fecha_incial" class="control-label"></label>
                     <input asp-for="fecha_incial" class="form-control" />
                     <span asp-validation-for="fecha_incial" class="text-danger"></span>

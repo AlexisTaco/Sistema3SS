@@ -13,9 +13,16 @@ namespace Sistema3SS_2020.Controllers
     {
         Proyecto proyecto = new Proyecto();
         Granja granja = new Granja();
+        public ActionResult CrearPresupuesto() 
+        {
+            Temporadas temporadas = new Temporadas();
+            Proyecto proyecto = new Proyecto();
+            proyecto.granjas = granja.MostrarLista();
+            proyecto.temporadas = temporadas.BuascarTemporadas();
+            return View(proyecto);
+        }
         public ActionResult CrearProyecto()
         {
-
             try
             {
                 Temporadas temporadas = new Temporadas();

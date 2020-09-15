@@ -18,6 +18,7 @@ namespace Sistema3SS_2020.Models
         public List<Granja> granjas { get; set; }
         public List<Temporadas> temporadas { get; set; }
         public Detalle_proyecto detalle { get; set; }
+        public Presupuesto presupuesto { get; set; }
         internal bool ResgistrarDetalle(Detalle_proyecto detalle_Proyecto)
         {
 

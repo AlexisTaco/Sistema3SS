@@ -1,45 +1,37 @@
 ﻿@model IEnumerable<Sistema3SS_2020.Models.Proyecto>
 
-<p>
-    <a asp-action="CrearProyecto">Create New</a>
-</p>
-<table class="table">
-    <thead>
+<br />
+    <p>
+        <input class="alert-success" type="button" onclick="location.href='@Url.Action("CrearProyecto", "AdminProyectos")'" value="Crear nuevo proyecto" />
+    </p>
+<table class="table table-striped">
+    <thead class="thead-light">
         <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.id)
+            <th class="text-center">
+               <a>Fecha inicial</a>
             </th>
-            <th>
-                @Html.DisplayNameFor(model => model.fecha_incial)
+            <th class="text-center">
+                <a>Fecha Final</a>
             </th>
-            <th>
-                @Html.DisplayNameFor(model => model.fecha_final)
+            <th class="text-center">
+                <a>Clave de usuario autorizo</a>
             </th>
-            <th>
-                @Html.DisplayNameFor(model => model.idUsuarioAutoriso)
-            </th>
-            <th></th>
         </tr>
     </thead>
     <tbody>
 @foreach (var item in Model) {
         <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.id)
+            <td class="text-center">
+                <a>@item.fecha_incial</a>
+            </td>
+            <td class="text-center">
+                <a>@item.fecha_final</a>
+            </td>
+            <td class="text-center">
+                <a>@item.idUsuarioAutoriso</a>
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.fecha_incial)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.fecha_final)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.idUsuarioAutoriso)
-            </td>
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Presupuesto", "EnviarInfoPresupesto", new { item.id })
+                <input class="alert" type="button" onclick="location.href='@Url.Action("CrearPresupuesto", "AdminProyectos",new { item.id })'" value="Ver presupuesto"/>
             </td>
         </tr>
 }

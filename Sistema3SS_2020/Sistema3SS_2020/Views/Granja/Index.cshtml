@@ -1,59 +1,52 @@
 ﻿@model IEnumerable<Sistema3SS_2020.Models.Granja>
 
+<br />
 <p>
-    <a asp-action="Create">Create New</a>
+    <input class="alert-success" type="button" onclick="location.href='@Url.Action("CrearProyecto", "AdminProyectos")'" value="Agregar nueva granja" />
 </p>
-<table class="table">
-    <thead>
+<table class="table table-striped">
+    <thead class="thead-light">
         <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.id)
+            <th class="text-center">
+                <a>Nombre</a>
             </th>
-            <th>
-                @Html.DisplayNameFor(model => model.nombre)
+            <th class="text-center">
+                <a>Ubicación</a>
             </th>
-            <th>
-                @Html.DisplayNameFor(model => model.ubicacion)
+            <th class="text-center">
+                <a><spam archive> Resposable</spam></a>
             </th>
-            <th>
-                @Html.DisplayNameFor(model => model.nombre_completo_responsable)
+            <th class="text-center">
+                <a>Numero de estanques</a>
             </th>
-            <th>
-                @Html.DisplayNameFor(model => model.numero_estanques)
+            <th class="text-center">
+                <a>Perimo de hectareas <span class="alert-info">m²</span></a>
             </th>
-            <th>
-                @Html.DisplayNameFor(model => model.perimetro_hetareas)
-            </th>
-            <th></th>
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.id)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.nombre)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ubicacion)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.nombre_completo_responsable)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.numero_estanques)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.perimetro_hetareas)
-            </td>
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { item.id}) |
-                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
-            </td>
-        </tr>
-}
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td class="text-center">
+                    @Html.DisplayFor(modelItem => item.nombre)
+                </td>
+                <td class="text-center">
+                    @Html.DisplayFor(modelItem => item.ubicacion)
+                </td>
+                <td class="text-center">
+                    @Html.DisplayFor(modelItem => item.nombre_completo_responsable)
+                </td>
+                <td class="text-center">
+                    @Html.DisplayFor(modelItem => item.numero_estanques)
+                </td>
+                <td class="text-center">
+                    @Html.DisplayFor(modelItem => item.perimetro_hetareas)
+                </td>
+                <td>
+                    <input class="alert" type="button" onclick="location.href='@Url.Action("Edit", "Granja",new { item.id })'" value="Editar cuenta" />
+                </td>
+            </tr>
+        }
     </tbody>
 </table>
