@@ -91,6 +91,48 @@ namespace Sistema3SS_2020.Repositorio
             }
 
         }
+
+        public Usuario ConsultarPorNombreycontrasena(string nombre,string contrasena)
+        {
+            try
+            {
+                con.abrirConeccion();
+                SqlDataReader myReader = null;
+                var state = con.conexion.State;
+                string cadena = "select * from USUARIOS where nombre = '" + nombre.ToString() + "' and contrasena = '"+contrasena.ToString()+"'";
+                SqlCommand comando = new SqlCommand(cadena, con.conexion);
+                myReader = comando.ExecuteReader();
+                Usuario usu = new Usuario();
+                if (myReader.Read())
+                {
+                    usu.id = Convert.ToInt32(myReader["id"].ToString().Trim());
+                    usu.nombre = myReader["nombre"].ToString().Trim();
+                    usu.contrasena = myReader["contrasena"].ToString().Trim();
+                    usu.id_tipo = Convert.ToInt32(myReader["id_tipo"].ToString().Trim());
+                    usu.correo_electronico = myReader["correo_electronico"].ToString().Trim();
+                    usu.apellido_materno = myReader["apellido_materno"].ToString().Trim();
+                    usu.apellido_paterno = myReader["apellido_paterno"].ToString().Trim();
+                    usu.direccion = myReader["direccion"].ToString().Trim();
+                    usu.numero_celular = myReader["numero_celular"].ToString().Trim();
+                    usu.fecha_nacimiento = Convert.ToDateTime(myReader["fecha_necimineto"].ToString().Trim());
+                    usu.id_tipo = Convert.ToInt32(myReader["id"]);
+                    usu.activo = Convert.ToBoolean(myReader["activo"]);
+                    con.CerrarConeccion();
+                    return usu;
+                }
+                else
+                {
+                    return null;
+                }
+
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+
         public bool Insertar(Usuario usu) 
         {
             try

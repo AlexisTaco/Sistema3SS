@@ -69,6 +69,18 @@ namespace Sistema3SS_2020.Models
                 return null;
             }
         }
+        public Usuario ConsultarInfoPorNombreycontrasena(string nombre,string contrasena)
+        {
+            var r = usuario_Repositorio.ConsultarPorNombreycontrasena(nombre,contrasena);
+            if (r != null)
+            {
+                return r;
+            }
+            else
+            {
+                return null;
+            }
+        }
         public bool actualizar(Usuario usuario)
         {
             var res = usuario_Repositorio.Actualizar(usuario,this.id);

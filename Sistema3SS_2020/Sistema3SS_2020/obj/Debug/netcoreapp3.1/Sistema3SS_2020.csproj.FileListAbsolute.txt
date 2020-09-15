@@ -9,7 +9,6 @@ C:\Users\Edgaro\Desktop\proyectoSistema3SS\Repositorio\Sistema3SS\Sistema3SS_202
 C:\Users\Edgaro\Desktop\proyectoSistema3SS\Repositorio\Sistema3SS\Sistema3SS_2020\Sistema3SS_2020\bin\Debug\netcoreapp3.1\Sistema3SS_2020.pdb
 C:\Users\Edgaro\Desktop\proyectoSistema3SS\Repositorio\Sistema3SS\Sistema3SS_2020\Sistema3SS_2020\bin\Debug\netcoreapp3.1\Sistema3SS_2020.Views.dll
 C:\Users\Edgaro\Desktop\proyectoSistema3SS\Repositorio\Sistema3SS\Sistema3SS_2020\Sistema3SS_2020\bin\Debug\netcoreapp3.1\Sistema3SS_2020.Views.pdb
-C:\Users\Edgaro\Desktop\proyectoSistema3SS\Repositorio\Sistema3SS\Sistema3SS_2020\Sistema3SS_2020\obj\Debug\netcoreapp3.1\Sistema3SS_2020.csprojAssemblyReference.cache
 C:\Users\Edgaro\Desktop\proyectoSistema3SS\Repositorio\Sistema3SS\Sistema3SS_2020\Sistema3SS_2020\obj\Debug\netcoreapp3.1\Sistema3SS_2020.AssemblyInfoInputs.cache
 C:\Users\Edgaro\Desktop\proyectoSistema3SS\Repositorio\Sistema3SS\Sistema3SS_2020\Sistema3SS_2020\obj\Debug\netcoreapp3.1\Sistema3SS_2020.AssemblyInfo.cs
 C:\Users\Edgaro\Desktop\proyectoSistema3SS\Repositorio\Sistema3SS\Sistema3SS_2020\Sistema3SS_2020\obj\Debug\netcoreapp3.1\Sistema3SS_2020.RazorAssemblyInfo.cache
@@ -116,8 +115,6 @@ C:\Users\Edgaro\Desktop\proyectoSistema3SS\Repositorio\Sistema3SS\Sistema3SS_202
 C:\Users\Edgaro\Desktop\proyectoSistema3SS\Repositorio\Sistema3SS\Sistema3SS_2020\Sistema3SS_2020\bin\Debug\netcoreapp3.1\runtimes\win-x86\native\sni.dll
 C:\Users\Edgaro\Desktop\proyectoSistema3SS\Repositorio\Sistema3SS\Sistema3SS_2020\Sistema3SS_2020\bin\Debug\netcoreapp3.1\runtimes\unix\lib\netcoreapp2.1\System.Data.SqlClient.dll
 C:\Users\Edgaro\Desktop\proyectoSistema3SS\Repositorio\Sistema3SS\Sistema3SS_2020\Sistema3SS_2020\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp2.1\System.Data.SqlClient.dll
-C:\Users\Edgaro\Desktop\proyectoSistema3SS\Repositorio\Sistema3SS\Sistema3SS_2020\Sistema3SS_2020\obj\Debug\netcoreapp3.1\Sistema3SS_2020.csproj.CoreCompileInputs.cache
-C:\Users\Edgaro\Desktop\proyectoSistema3SS\Repositorio\Sistema3SS\Sistema3SS_2020\Sistema3SS_2020\obj\Debug\netcoreapp3.1\Sistema3SS_2020.MvcApplicationPartsAssemblyInfo.cache
 C:\Users\Edgaro\Desktop\proyectoSistema3SS\Repositorio\Sistema3SS\Sistema3SS_2020\Sistema3SS_2020\obj\Debug\netcoreapp3.1\Razor\Views\Usuario\Index.cshtml.g.cs
 C:\Users\Edgaro\Desktop\proyectoSistema3SS\Repositorio\Sistema3SS\Sistema3SS_2020\Sistema3SS_2020\obj\Debug\netcoreapp3.1\Razor\Views\Usuario\Details.cshtml.g.cs
 C:\Users\Edgaro\Desktop\proyectoSistema3SS\Repositorio\Sistema3SS\Sistema3SS_2020\Sistema3SS_2020\obj\Debug\netcoreapp3.1\Razor\Views\Usuario\Create.cshtml.g.cs
@@ -130,3 +127,8 @@ C:\Users\Edgaro\Desktop\proyectoSistema3SS\Repositorio\Sistema3SS\Sistema3SS_202
 C:\Users\Edgaro\Desktop\proyectoSistema3SS\Repositorio\Sistema3SS\Sistema3SS_2020\Sistema3SS_2020\obj\Debug\netcoreapp3.1\Razor\Views\Insumos\Index.cshtml.g.cs
 C:\Users\Edgaro\Desktop\proyectoSistema3SS\Repositorio\Sistema3SS\Sistema3SS_2020\Sistema3SS_2020\obj\Debug\netcoreapp3.1\Razor\Views\Insumos\Create.cshtml.g.cs
 C:\Users\Edgaro\Desktop\proyectoSistema3SS\Repositorio\Sistema3SS\Sistema3SS_2020\Sistema3SS_2020\obj\Debug\netcoreapp3.1\Razor\Views\Principal\Presupuesto.cshtml.g.cs
+C:\Users\Edgaro\Desktop\proyectoSistema3SS\Repositorio\Sistema3SS\Sistema3SS_2020\Sistema3SS_2020\obj\Debug\netcoreapp3.1\Sistema3SS_2020.csproj.CoreCompileInputs.cache
+C:\Users\Edgaro\Desktop\proyectoSistema3SS\Repositorio\Sistema3SS\Sistema3SS_2020\Sistema3SS_2020\obj\Debug\netcoreapp3.1\Sistema3SS_2020.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\Edgaro\Desktop\proyectoSistema3SS\Repositorio\Sistema3SS\Sistema3SS_2020\Sistema3SS_2020\obj\Debug\netcoreapp3.1\Razor\Views\AdminProyectos\CrearProyecto.cshtml.g.cs
+C:\Users\Edgaro\Desktop\proyectoSistema3SS\Repositorio\Sistema3SS\Sistema3SS_2020\Sistema3SS_2020\obj\Debug\netcoreapp3.1\Sistema3SS_2020.csprojAssemblyReference.cache
+C:\Users\Edgaro\Desktop\proyectoSistema3SS\Repositorio\Sistema3SS\Sistema3SS_2020\Sistema3SS_2020\obj\Debug\netcoreapp3.1\Razor\Views\AdminProyectos\Index.cshtml.g.cs

@@ -10,14 +10,21 @@ namespace Sistema3SS_2020.Controllers
 {
     public class PrincipalController : Controller
     {
+        Proyecto proyecto = new Proyecto();
         // GET: PrincipalController
         public ActionResult Presupuesto()
         {
-            Granja granja = new Granja();
-            return View(granja.MostrarLista());
+            return View(proyecto);
+        }
+        public void crearPresupuesto(int id)
+        {
+            proyecto.BuscarDetallePorId(id);
+            proyecto.BuscarGranjasEnProyecto(proyecto.detalle.id);
+            RedirectToAction("Presupuesto");
         }
         public ActionResult Principal()
         {
+            ViewBag.UserLogin = HttpContext.Session.GetString("NombreUsuario");
             return View();
         }
 
