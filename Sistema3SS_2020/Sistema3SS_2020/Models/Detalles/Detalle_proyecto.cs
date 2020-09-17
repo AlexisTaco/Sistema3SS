@@ -9,7 +9,6 @@ namespace Sistema3SS_2020.Models
     public class Detalle_proyecto
     {
         Proyectos_repositorio proyectos_Repositorio = new Proyectos_repositorio();
-        Granja granja = new Granja();
         public int id { get; set; }
         public int idProyecto { get; set; }
         public int idTemporada { get; set; }

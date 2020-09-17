@@ -52,7 +52,7 @@ function jsFuncionNumeroEstanques() {
         }
         var Est1 = document.getElementById("Est1");
         Est1.style.visibility = "visible";
-    } if (numeroElect == 1) {
+    } if (numeroElect == 3) {
         console.log("Desancadena seleccionar varios");
         var Est2 = document.getElementById("Est2");
         Est2.visibility = true;
