@@ -15,10 +15,11 @@ namespace Sistema3SS_2020.Controllers
         Presupuesto presupuesto = new Presupuesto();
         Proyecto proyecto = new Proyecto();
         Granja granja = new Granja();
+
         #region Mostrar Presupuestos
-        public ActionResult listaDePresupuestos()
+        public void listaDePresupuestos(int id)
         {
-            return View();
+            proyecto.presupuesto.Detalles = presupuesto.BuscarDetalles(id);
         }
 
 

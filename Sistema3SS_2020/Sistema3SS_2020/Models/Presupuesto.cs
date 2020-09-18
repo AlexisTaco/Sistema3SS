@@ -12,10 +12,11 @@ namespace Sistema3SS_2020.Models
         public int id { get; set; }
         public List<Tipo_presupuesto> tipo_s { get; set; }
         public int IdTipo { get; set; }
-        public int idGasto { get; set; }
+        public int idProyecto { get; set; }
         public double total_presupuesto { get; set; }
         public Detalle_presupuesto detalle { get; set; }
         public List<Gastos> TiposGastos { get; set; }
+        public List<Detalle_presupuesto> Detalles { get; set; }
         public List<Tipo_presupuesto> BuscarTiposDePresupuesto()
         {
            return presupuesto_Repositorio.BuscarTiposPresupuesto();
@@ -34,9 +35,11 @@ namespace Sistema3SS_2020.Models
         {
             return presupuesto_Repositorio.BuscarTiposConceptos_gasto();
         }
-        public bool AgregarEnDetalleProyecto(int idProyecto,int id) 
+
+
+        public List<Detalle_presupuesto> BuscarDetalles(int idPresupuesto) 
         {
-           return presupuesto_Repositorio.RegistraEnProyecto(idProyecto,id);
+            return presupuesto_Repositorio.BuscarDetallaPorIdProyecto(idPresupuesto);
         }
     }
 }

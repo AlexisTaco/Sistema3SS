@@ -43,12 +43,17 @@ namespace Sistema3SS_2020.Repositorio
 
         }
 
+        internal Concepcion BuscarTiposConcepcionPorId(int concepcionId)
+        {
+            throw new NotImplementedException();
+        }
+
         internal bool RegistrarDetallePresupuesto(Presupuesto presupuesto)
         {
             try
             {
                 con.abrirConeccion();
-                string cadena = "Insert into DETALLE_PRESUPUESTO(id,idConcepcion,idPresupuesto,idGranja) values (" + presupuesto.id + "," + presupuesto.detalle.concepcion.id + "," + presupuesto.id + "," + presupuesto.detalle.granja.id + ")";
+                string cadena = "Insert into DETALLE_PRESUPUESTOS(id,idConcepcion,idPresupuesto,idGranja,idProyecto,idGasto) values (" + presupuesto.id + "," + presupuesto.detalle.concepcion.id + "," + presupuesto.id + "," + presupuesto.detalle.granja.id + "," + presupuesto.idProyecto+ "," + presupuesto.detalle.gastos.id + ")";
                 SqlCommand comando = new SqlCommand(cadena, con.conexion);
                 comando.ExecuteNonQuery();
                 con.conexion.Close();
@@ -58,6 +63,40 @@ namespace Sistema3SS_2020.Repositorio
             {
                 var a = e.Message;
                 return false;
+            }
+        }
+
+        internal List<Detalle_presupuesto> BuscarDetallaPorIdProyecto(int idProyecto)
+        {
+            try
+            {
+                SqlCommand cmd = new SqlCommand();
+                DataSet ds = new DataSet();
+                SqlDataAdapter sqlDA;
+                cmd.Connection = con.conexion;
+                cmd.CommandText = "select * from DETALLE_PRESUPUESTOS wehre idProyecto = " + idProyecto;
+                cmd.CommandType = CommandType.Text;
+                sqlDA = new SqlDataAdapter(cmd);
+                sqlDA.Fill(ds);
+                var myData = ds.Tables[0].AsEnumerable().Select(r => new Detalle_presupuesto
+                {
+                    id = r.Field<int>("id"),
+                    idPresupuesto = r.Field<int>("idPresupuesto"),
+                    idConcepcion = r.Field<int>("Concepcion"),
+                    idGranja = r.Field<int>("idGranja"),
+                    idProyecto = r.Field<int>("idProyecto"),
+                    idGasto = r.Field<int>("idGasto")
+
+                }
+
+                );
+                var list = myData.ToList(); // For if you really need a List and not IEnumerable
+                return list;
+            }
+            catch (Exception e)
+            {
+                var a = e.Message;
+                return null;
             }
         }
 
@@ -161,7 +200,7 @@ namespace Sistema3SS_2020.Repositorio
             try
             {
                 con.abrirConeccion();
-                string cadena = "Insert into PRESUPUESTOS(id,idTipo,idGasto) values (" +presupuesto.id + "," + presupuesto.IdTipo + "," + presupuesto.detalle.gastos.id + ")";
+                string cadena = "Insert into PRESUPUESTOS(id,idTipo) values (" +presupuesto.id + "," + presupuesto.IdTipo + ")";
                 SqlCommand comando = new SqlCommand(cadena, con.conexion);
                 comando.ExecuteNonQuery();
                 con.conexion.Close();
@@ -286,22 +325,6 @@ namespace Sistema3SS_2020.Repositorio
             }
 
 
-        }
-        public bool RegistraEnProyecto(int idProyecto, int IdPresupuesto) 
-        {
-            try
-            {
-                con.abrirConeccion();
-                string cadena = "update DETALLE_PROYECTOS set idPresupuesto = "+IdPresupuesto+" where id =" + idProyecto;
-                SqlCommand comando = new SqlCommand(cadena, con.conexion);
-                comando.ExecuteNonQuery();
-                return true;
-            }
-            catch (Exception e)
-            {
-                var a = e.Message.Trim();
-                return false;
-            }
         }
     }
 }

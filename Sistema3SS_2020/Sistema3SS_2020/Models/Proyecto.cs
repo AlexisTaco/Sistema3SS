@@ -32,9 +32,7 @@ namespace Sistema3SS_2020.Models
             }
 
         }
-
         public List<int> Estanques { get; set; }
-
         public bool Insertar(Proyecto proyecto) 
         {
            var pro = proyectos_Repositorio.Insertar(proyecto);
@@ -58,6 +56,8 @@ namespace Sistema3SS_2020.Models
         {
             this.granjas = detalle_Granja.BuscarIdsGranjasPorIDproyecto(idProyecto);
         }
+
+
 
 
 

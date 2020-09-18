@@ -10,6 +10,12 @@ namespace Sistema3SS_2020.Models
     {
         Presupuesto_repositorio presupuesto_Repositorio = new Presupuesto_repositorio();
         public int id { get; set; }
+        public int idPresupuesto;
+        public int idConcepcion;
+        public int idGranja;
+        public int idProyecto;
+        public int idGasto;
+        public Presupuesto presupuesto { get; set; }
         public Proyecto proyecto { get; set; }
         public Concepcion concepcion { get; set; }
         public Granja granja { get; set; }
@@ -19,6 +25,11 @@ namespace Sistema3SS_2020.Models
         internal bool RegistrarDetalle( Presupuesto presupuesto)
         {
            return presupuesto_Repositorio.RegistrarDetallePresupuesto(presupuesto);
+        }
+
+        public void BuscarConcepcion(int ConcepcionId) 
+        {
+            this.concepcion = presupuesto_Repositorio.BuscarTiposConcepcionPorId(ConcepcionId);
         }
     }
 }

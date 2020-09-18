@@ -15,20 +15,14 @@ namespace Sistema3SS_2020.Models
 
             var idAsiganda = Pre_repo.AsignarId();
             _presupuesto.id = idAsiganda;
+            _presupuesto.idProyecto = idProyecto;
 
             if (Pre_repo.RegistrarPresupuesto(_presupuesto))
             {
                 _presupuesto.detalle.id = Pre_repo.AsignarIdDalle();
                 if (Detalle_presu.RegistrarDetalle(_presupuesto) == true)
                 {
-                    if (_presupuesto.AgregarEnDetalleProyecto(idProyecto,_presupuesto.id))
-                    {
-                        return true;
-                    }
-                    else
-                    {
-                        return false;
-                    }
+                    return true;
                 }
                 return true;
             }

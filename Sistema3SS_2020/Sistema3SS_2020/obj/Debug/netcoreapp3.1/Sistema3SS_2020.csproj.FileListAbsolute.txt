@@ -136,3 +136,4 @@ C:\Users\Edgaro\Desktop\proyectoSistema3SS\Repositorio\Sistema3SS\Sistema3SS_202
 C:\Users\Edgaro\Desktop\proyectoSistema3SS\Repositorio\Sistema3SS\Sistema3SS_2020\Sistema3SS_2020\obj\Debug\netcoreapp3.1\Razor\Views\AdminProyectos\ListaDePresupuestos.cshtml.g.cs
 C:\Users\Edgaro\Desktop\proyectoSistema3SS\Repositorio\Sistema3SS\Sistema3SS_2020\Sistema3SS_2020\bin\Debug\netcoreapp3.1\libman.json
 C:\Users\Edgaro\Desktop\proyectoSistema3SS\Repositorio\Sistema3SS\Sistema3SS_2020\Sistema3SS_2020\obj\Debug\netcoreapp3.1\Razor\Views\AdminProyectos\Proyecciones.cshtml.g.cs
+C:\Users\Edgaro\Desktop\proyectoSistema3SS\Repositorio\Sistema3SS\Sistema3SS_2020\Sistema3SS_2020\obj\Debug\netcoreapp3.1\Razor\Views\Usuario\test.cshtml.g.cs
