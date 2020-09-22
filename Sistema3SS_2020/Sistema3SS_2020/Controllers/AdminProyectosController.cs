@@ -15,14 +15,62 @@ namespace Sistema3SS_2020.Controllers
         Presupuesto presupuesto = new Presupuesto();
         Proyecto proyecto = new Proyecto();
         Granja granja = new Granja();
-
+        Gastos gastos = new Gastos();
+        Detalle_presupuesto detalle_Presupuesto = new Detalle_presupuesto();
         #region Mostrar Presupuestos
-        public void listaDePresupuestos(int id)
+
+        [HttpGet]
+        public ActionResult listaDePresupuestos(int id)
         {
+            PresupuestoGeneral presupuestoGeneral = new PresupuestoGeneral();
+            List<Detalle_presupuesto> detalle_Presupuestos = new List<Detalle_presupuesto>();
+            proyecto.BuscarSemanasTemporadasEnProyecto();
+            presupuesto.Detalles = detalle_Presupuestos;
+            proyecto.presupuesto = presupuesto;
+            proyecto.presupuesto.Detalles = presupuesto.Detalles;
             proyecto.presupuesto.Detalles = presupuesto.BuscarDetalles(id);
+            proyecto.presupuestos = presupuestoGeneral.BuscarInformacionPresupuestos(proyecto.presupuesto.Detalles);
+           // proyecto.presupuesto.TipoPrsupuesto = 
+            return View(proyecto);
         }
 
+        #endregion
+        #region Mostrar Proyecciones
+        
 
+        #endregion
+        #region CraearProyeccion
+        [HttpPost]
+        public ActionResult listaDePresupuestos(int id, IFormCollection collection, string CantidadProyeccion)
+        {
+            AgregarProyeccion(id, collection);
+            return RedirectToAction(nameof(listaDePresupuestos));
+        }
+        public bool AgregarProyeccion(int id, IFormCollection ProyeccionCollection)
+        {
+            PresupuestoGeneral presupuestoGeneral = new PresupuestoGeneral();
+
+            Proyecciones proyecciones = new Proyecciones();
+            proyecciones.id = presupuestoGeneral.AsignarIdProyeccion();
+            proyecciones.idPresupuesto = Convert.ToInt32(ProyeccionCollection["presuID"]);
+            var fecha = BuscarFechaSemana(Convert.ToInt32(Convert.ToInt32(ProyeccionCollection["SelectSemana-" + proyecciones.idPresupuesto.ToString()])));
+            proyecciones.incio_semana = fecha.fecha_inicial;
+            proyecciones.final_semana = fecha.fecha_final;
+            proyecciones.gasto_estimado = Convert.ToDouble(ProyeccionCollection["CantidadProyeccion-" + proyecciones.idPresupuesto.ToString()]);
+            if (presupuestoGeneral.RegistrarProyeccion(proyecciones))
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+        SemanasTemporada BuscarFechaSemana(int id)
+        {
+            SemanasTemporada semanas = new SemanasTemporada();
+            return semanas.buscarPorId(id);
+        }
         #endregion
         #region Crear Presupuesto
         public ActionResult CrearPresupuesto()
@@ -74,7 +122,6 @@ namespace Sistema3SS_2020.Controllers
             }
         }
         #endregion
-
         #region Crear Proyecto
         public ActionResult CrearProyecto()
         {

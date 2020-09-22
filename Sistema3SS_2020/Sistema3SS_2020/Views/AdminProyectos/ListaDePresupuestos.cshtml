@@ -1,55 +1,110 @@
-﻿<html>
+﻿@model Sistema3SS_2020.Models.Proyecto
+<html>
 <head>
 
 </head>
 <body>
-    <table class="table">
-        <thead class="thead-dark">
-            <tr>
-                <th scope="col">Economico</th>
-                <th scope="col">Gasto</th>
-                <th scope="col">Concepto</th>
-                <th scope="col">$</th>
+    <br />
+    <br />
+    <br />
+        <table class="table">
+            <thead class="thead-dark">
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Economico</th>
+                    <th scope="col">Gasto</th>
+                    <th scope="col">Concepto</th>
+                    <th scope="col">$</th>
 
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <th scope="row">1</th>
-            </tr>
-            <tr>
-                <th scope="row">2</th>
-            </tr>
-            <tr>
-                <th scope="row">3</th>
-            </tr>
-            <tr>
-                <th>Total $ </th>
-            </tr>
-        </tbody>
-    </table>
-    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLongTitle">PREOYECCIONES</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <partial name="/Views/AdminProyectos/Proyecciones.cshtml">
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-                    <button type="submit" class="form-control">Guardar proyección</button>
-                </div>
-            </div>
-        </div>
-    </div>
-    <table class="table">
+                </tr>
+            </thead>
+            <tbody>
+                @{int count1 = 0; }
+
+                @foreach (var presu in Model.presupuestos)
+                {
+                    int numeropresu = presu.id;
+                    @if (presu.TipoPrsupuesto.Nombre.Trim() == "Económico")
+                    {
+                        <tr>
+                            <td>@count1</td>
+                            <td>Presupuesto de @presu.detalle.concepcion.nombres en granja <spam>@presu.detalle.granja.nombre</spam> </td>
+                            <td>El gasto se debe a @presu.detalle.concepto_Gastos.ConceptoDes </td>
+                            <td>se describe como: @presu.detalle.gastos.Nombre </td>
+                            <td>$ 0</td>
+                            <td>
+                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#Taco-@presu.id" title="Agregar proyección">
+                                  <i class="material-icons">&#xE147;</i>
+                                </button>
+                                <form method="post">
+                                    <div class="modal fade" id="Taco-@presu.id" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                                        <div class="modal-dialog modal-dialog-centered" role="document">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title" id="">PREOYECCIONES</h5>
+                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                        <span aria-hidden="true">&times;</span>
+                                                    </button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <div class="container">
+                                                        <label>Semanas</label>
+                                                        <select name="SelectSemana-@presu.id" id="SelectSemana-@presu.id">
+                                                            @{int CountSem = 1; }
+                                                            @foreach (var semana in Model.semanasTemporada)
+                                                            {
+                                                                <option value="@semana.id">Semana @CountSem del @semana.fecha_inicial.ToShortDateString() - @semana.fecha_final.ToShortDateString() </option>
+                                                                CountSem++;
+                                                            }
+                                                        </select>
+                                                        <br />
+                                                        <label><spam class="alert-dark">$</spam> </label>
+                                                        <input id="CantidadProyeccion-@presu.id" name="CantidadProyeccion" class="text-body" placeholder="Agregar cantidad..." title="Agregar cantidad estimada" />
+                                                    </div>
+                                                    <table class="table">
+                                                        <thead class="thead-dark">
+                                                            <tr>
+                                                                <th scope="col">SEMANA</th>
+                                                                <th scope="col">Cantidad proyectada</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            @foreach (var item in Model.presupuestos)
+                                                            {
+                                                                <tr>
+                                                                    <th scope="row">1</th>
+                                                                </tr>
+                                                            }
+                                                            <tr>
+                                                                <th>Total $0 </th>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                                                        <button class="btn btn-primary" value="@presu.id" id="presuID" name="presuID" > Registrar Proyección</button>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                            </td>
+                        </tr>
+                    }
+                    count1++;
+                }
+                <tr>
+                    <th>Total $0 </th>
+                </tr>
+            </tbody>
+        </table>
+
+    @*<table class="table">
         <thead class="thead-dark">
             <tr>
+                <th scope="col">#</th>
                 <th scope="col">Produccion</th>
                 <th scope="col">Gasto</th>
                 <th scope="col">Concepto</th>
@@ -57,20 +112,87 @@
             </tr>
         </thead>
         <tbody>
-            <tr>
-                <th scope="row">1</th>
-            </tr>
-            <tr>
-                <th scope="row">2</th>
-            </tr>
-            <tr>
-                <th scope="row">3</th>
-            </tr>
+            @{int count = 0; }
+            @foreach (var presu2 in Model.presupuestos)
+            {
+
+                @if (presu2.TipoPrsupuesto.Nombre.Trim() == "Producción")
+                {
+                    <tr>
+                        <td>@count</td>
+                        <td>Presupuesto de @presu2.detalle.concepcion.nombres en granja <spam>@presu2.detalle.granja.nombre</spam> </td>
+                        <td>El gasto se debe a @presu2.detalle.gastos.Nombre</td>
+                        <td>se describe como: @presu2.detalle.concepto_Gastos.ConceptoDes</td>
+                        <td>$ 0</td>
+                        <td>
+                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter" title="Agregar proyección">
+                                <i class="material-icons">&#xE147;</i>
+                            </button>
+                            <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                                <div class="modal-dialog modal-dialog-centered" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="exampleModalLongTitle">PREOYECCIONES</h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <form method="post">
+                                                <div class="container">
+                                                    <label>Semanas</label>
+                                                    <select name="SelectSemana" id="SelectSemana">
+                                                        @{int CountSem = 1; }
+                                                        @foreach (var semana in Model.semanasTemporada)
+                                                        {
+                                                            <option value="@semana.id">Semana @CountSem del @semana.fecha_inicial.ToShortDateString() - @semana.fecha_final.ToShortDateString() </option>
+                                                            CountSem++;
+                                                        }
+                                                    </select>
+                                                    <label><spam class="alert-dark">$</spam> </label>
+                                                    <input id="CantidadProyeccion2" name="CantidadProyeccion2" class="text-body" placeholder="Agregar cantidad..." title="Agregar cantidad estimada" />s
+                                                </div>
+                                                <table class="table">
+                                                    <thead class="thead-dark">
+                                                        <tr>
+                                                            <th scope="col">SEMANA</th>
+                                                            <th scope="col">Cantidad proyectada</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr>
+                                                            <th scope="row">1</th>
+                                                        </tr>
+                                                        <tr>
+                                                            <th scope="row">2</th>
+                                                        </tr>
+                                                        <tr>
+                                                            <th scope="row">3</th>
+                                                        </tr>
+                                                        <tr>
+                                                            <th>Total $0 </th>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                                                    <input class="alert" type="button" onclick="location.href='@Url.Action("AgregarProyeccionPresupuestos", "AdminProyectos",new { presu2 })'" value="Editar caracteristicas" />
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                }
+                count++;
+            }
             <tr>
 
-                <th>Total $ </th>
+                <th>Total $0 </th>
             </tr>
         </tbody>
-    </table>
+    </table>*@
 </body>
 </html>

@@ -12,11 +12,13 @@ namespace Sistema3SS_2020.Models
         Detalle_granja detalle_Granja = new Detalle_granja();
         Proyectos_repositorio proyectos_Repositorio = new Proyectos_repositorio();
         public int id { get; set; }
+        public List<SemanasTemporada> semanasTemporada; 
         public DateTime fecha_incial { get; set; }
         public DateTime fecha_final { get; set; }
         public int idUsuarioAutoriso { get; set; }
         public List<Granja> granjas { get; set; }
         public List<Temporadas> temporadas { get; set; }
+        public List<Presupuesto> presupuestos { get; set; }
         public Detalle_proyecto detalle { get; set; }
         public Presupuesto presupuesto;
         internal bool ResgistrarDetalle(Detalle_proyecto detalle_Proyecto)
@@ -55,6 +57,10 @@ namespace Sistema3SS_2020.Models
         public void BuscarGranjasEnProyecto(int idProyecto) 
         {
             this.granjas = detalle_Granja.BuscarIdsGranjasPorIDproyecto(idProyecto);
+        }
+        public void BuscarSemanasTemporadasEnProyecto()
+        {
+            this.semanasTemporada = proyectos_Repositorio.BuscarSemanasTempo();
         }
 
 

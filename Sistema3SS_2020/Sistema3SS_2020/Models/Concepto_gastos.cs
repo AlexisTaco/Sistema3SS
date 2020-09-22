@@ -9,6 +9,5 @@ namespace Sistema3SS_2020.Models
     {
         public int id { get; set; }
         public string  ConceptoDes { get; set; }
-       public List<Gastos> gastos { get; set; }
     }
 }

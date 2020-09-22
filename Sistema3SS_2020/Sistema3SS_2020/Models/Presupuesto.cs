@@ -13,13 +13,23 @@ namespace Sistema3SS_2020.Models
         public List<Tipo_presupuesto> tipo_s { get; set; }
         public int IdTipo { get; set; }
         public int idProyecto { get; set; }
+        public string NombreTipo;
         public double total_presupuesto { get; set; }
         public Detalle_presupuesto detalle { get; set; }
         public List<Gastos> TiposGastos { get; set; }
         public List<Detalle_presupuesto> Detalles { get; set; }
+        public List<Concepcion> Concepciones { get; set; }
+        public List<Concepto_gastos> Conceptos_gastos { get; set; }
+        public Tipo_presupuesto TipoPrsupuesto { get; internal set; }
+
         public List<Tipo_presupuesto> BuscarTiposDePresupuesto()
         {
            return presupuesto_Repositorio.BuscarTiposPresupuesto();
+        }
+
+        internal Tipo_presupuesto buscarPorTipoPorId(int id)
+        {
+            return presupuesto_Repositorio.buscarPorTipoPorId(id);
         }
 
         public List<Concepcion> BuscarTiposDeConcepcion()
@@ -40,6 +50,11 @@ namespace Sistema3SS_2020.Models
         public List<Detalle_presupuesto> BuscarDetalles(int idPresupuesto) 
         {
             return presupuesto_Repositorio.BuscarDetallaPorIdProyecto(idPresupuesto);
+        }
+
+        internal Presupuesto buscar(int idPresupuesto)
+        {
+            return presupuesto_Repositorio.Buscar(idPresupuesto);
         }
     }
 }

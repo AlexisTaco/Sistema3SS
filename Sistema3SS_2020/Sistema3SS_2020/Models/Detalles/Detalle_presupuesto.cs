@@ -15,8 +15,6 @@ namespace Sistema3SS_2020.Models
         public int idGranja;
         public int idProyecto;
         public int idGasto;
-        public Presupuesto presupuesto { get; set; }
-        public Proyecto proyecto { get; set; }
         public Concepcion concepcion { get; set; }
         public Granja granja { get; set; }
         public Concepto_gastos concepto_Gastos { get; set; }
@@ -27,9 +25,5 @@ namespace Sistema3SS_2020.Models
            return presupuesto_Repositorio.RegistrarDetallePresupuesto(presupuesto);
         }
 
-        public void BuscarConcepcion(int ConcepcionId) 
-        {
-            this.concepcion = presupuesto_Repositorio.BuscarTiposConcepcionPorId(ConcepcionId);
-        }
     }
 }

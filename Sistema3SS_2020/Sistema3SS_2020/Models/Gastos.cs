@@ -10,5 +10,11 @@ namespace Sistema3SS_2020.Models
         public int id { get; set; }
         public string Nombre { get; set; }
 
+        public int IdConcepto { get; set; }
+
+        internal List<Gastos> BuscarPorId()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

@@ -318,7 +318,7 @@
                                 <h2>Administridar <b>Proyectos</b></h2>
                             </div>
                             <div class="col-sm-6">
-                                <a href="#addEmployeeModal" class="btn btn-success" data-toggle="modal"><i class="material-icons">&#xE147;</i> <span>Crear nuevo proyecto</span></a>
+                                <a href="@Url.Action("CrearProyecto", "AdminProyectos")" class="btn btn-success"><i class="material-icons">&#xE147;</i> <span>Crear nuevo proyecto</span></a>
                                 <a href="#deleteEmployeeModal" class="btn btn-danger" data-toggle="modal"><i class="material-icons">&#xE15C;</i> <span>Eliminar</span></a>
                             </div>
                         </div>
@@ -357,8 +357,9 @@
                                         @Html.DisplayFor(modelItem => item.idUsuarioAutoriso)
                                     </td>
                                     <td>
-                                        <a href="#editEmployeeModal" class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
-                                        <a href="#deleteEmployeeModal" class="delete" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
+                                        <a href="@Url.Action("listaDePresupuestos","AdminProyectos",new {item.id })" class="edit"><i class="material-icons" data-toggle="tooltip" title="Ver presupuestos">&#xE254;</i></a>
+                                        <a href="@Url.Action("CrearPresupuesto","AdminProyectos",new {item.id })" class="alert-info"><i class="material-icons" data-toggle="tooltip" title="Añadir presupuesto">&#xE254;</i></a>
+                                        @*<a href="#deleteEmployeeModal" class="delete" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>*@
                                     </td>
                                 </tr>
                             }
@@ -379,18 +380,8 @@
         <div id="addEmployeeModal" class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-lg">
                 <div class="modal-content">
-                    <form>
-                        <div class="modal-header">
                             <h4 class="modal-title">Crear Proyecto</h4>
                             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                        </div>
-                        <div class="modal-body">
-                        </div>
-                        <div class="modal-footer">
-                            <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
-                            <input type="submit" class="btn btn-success" value="Add">
-                        </div>
-                    </form>
                 </div>
             </div>
         </div>

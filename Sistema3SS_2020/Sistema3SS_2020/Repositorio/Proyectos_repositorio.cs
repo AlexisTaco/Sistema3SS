@@ -65,6 +65,26 @@ namespace Sistema3SS_2020.Repositorio
             return list;
         }
 
+        internal List<SemanasTemporada> BuscarSemanasTempo()
+        {
+            SqlCommand cmd = new SqlCommand();
+            DataSet ds = new DataSet();
+            SqlDataAdapter sqlDA;
+            cmd.Connection = con.conexion;
+            cmd.CommandText = "select * from SEMANAS_TEMPORADA";
+            cmd.CommandType = CommandType.Text;
+            sqlDA = new SqlDataAdapter(cmd);
+            sqlDA.Fill(ds);
+            var myData = ds.Tables[0].AsEnumerable().Select(r => new SemanasTemporada
+            {
+                id = Convert.ToInt32(r.Field<int>("id")),
+                fecha_inicial = Convert.ToDateTime(r.Field<DateTime>("fecha_inicial")),
+                fecha_final = Convert.ToDateTime(r.Field<DateTime>("fecha_final")),
+            });
+            var list = myData.ToList(); // For if you really need a List and not IEnumerable
+            return list;
+        }
+
         public Temporadas BuscarIdTemporadaPorfechas(DateTime fechaIni, DateTime fechaFin)
         {
             try
