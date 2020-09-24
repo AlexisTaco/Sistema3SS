@@ -62,6 +62,40 @@ namespace Sistema3SS_2020.Models
         {
             this.semanasTemporada = proyectos_Repositorio.BuscarSemanasTempo();
         }
+        public List<SemanasTemporada> ListaDeSemanas { get; set; }
+        public void CalularSemanasDeProyecto(DateTime FechaInicial,DateTime fechaFinal)
+        {
+            ////Primero calculamos los dias entre las dos fechas
+            
+            double dias = (fechaFinal - FechaInicial ).TotalDays;
+            int count = 1;
+            do
+            {
+                SemanasTemporada semana = new SemanasTemporada();
+                if (count == 1)
+                {
+                    semana.fecha_inicial = FechaInicial;
+                    semana.fecha_final = FechaInicial.AddDays(7);
+                    dias = dias - 7;
+                    count++;
+                    ListaDeSemanas.Add(semana);
+                }
+                else
+                {
+                    semana.id = 1; //semana.AsignarId();
+                    semana.fecha_inicial = FechaInicial.AddDays(7);
+                    if (semana.fecha_inicial <= fechaFinal)
+                    {
+                        ListaDeSemanas.Add(semana);
+                        dias = dias - 7;
+                    }
+
+                }
+
+
+
+            } while (dias == 0);
+        }
 
 
 

@@ -222,31 +222,39 @@ namespace Sistema3SS_2020.Repositorio
         }
         public List<Usuario> MostarLista() 
         {
-
-            SqlCommand cmd = new SqlCommand();
-            DataSet ds = new DataSet();
-            SqlDataAdapter sqlDA;
-            cmd.Connection = con.conexion;
-            cmd.CommandText = "select * from USUARIOS";
-            cmd.CommandType = CommandType.Text;
-            sqlDA = new SqlDataAdapter(cmd);
-            sqlDA.Fill(ds);
-            var myData = ds.Tables[0].AsEnumerable().Select(r => new Usuario
+            try
             {
-                nombre = r.Field<string>("nombre"),
-                apellido_paterno = r.Field<string>("apellido_paterno"),
-                apellido_materno = r.Field<string>("apellido_materno"),
-                contrasena = r.Field<string>("contrasena"),
-                correo_electronico = r.Field<string>("correo_electronico"),
-                numero_celular = r.Field<string>("numero_celular"),
-                activo = r.Field<bool>("activo"),
-                direccion = r.Field<string>("direccion"),
-                fecha_nacimiento = r.Field<DateTime>("fecha_necimineto"),
-                id = r.Field<int>("id"),
-                id_tipo = r.Field<int>("id_tipo")
-            });
-            var list = myData.ToList(); // For if you really need a List and not IEnumerable
-            return list;
+                SqlCommand cmd = new SqlCommand();
+                DataSet ds = new DataSet();
+                SqlDataAdapter sqlDA;
+                cmd.Connection = con.conexion;
+                cmd.CommandText = "select * from USUARIOS";
+                cmd.CommandType = CommandType.Text;
+                sqlDA = new SqlDataAdapter(cmd);
+                sqlDA.Fill(ds);
+                var myData = ds.Tables[0].AsEnumerable().Select(r => new Usuario
+                {
+                    nombre = r.Field<string>("nombre"),
+                    apellido_paterno = r.Field<string>("apellido_paterno"),
+                    apellido_materno = r.Field<string>("apellido_materno"),
+                    contrasena = r.Field<string>("contrasena"),
+                    correo_electronico = r.Field<string>("correo_electronico"),
+                    numero_celular = r.Field<string>("numero_celular"),
+                    activo = r.Field<bool>("activo"),
+                    direccion = r.Field<string>("direccion"),
+                    fecha_nacimiento = r.Field<DateTime>("fecha_necimineto"),
+                    id = r.Field<int>("id"),
+                    id_tipo = r.Field<int>("id_tipo")
+                });
+                var list = myData.ToList(); // For if you really need a List and not IEnumerable
+                return list;
+            }
+            catch (Exception e)
+            {
+               var a = e.Message;
+                throw;
+            }
+
         }
     }
 }

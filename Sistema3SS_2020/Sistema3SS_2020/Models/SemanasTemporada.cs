@@ -17,5 +17,10 @@ namespace Sistema3SS_2020.Models
             Presupuesto_repositorio presupuesto_Repositorio = new Presupuesto_repositorio();
             return presupuesto_Repositorio.buscarFechaSemanaPorId(id);
         }
+
+        internal int AsignarId()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

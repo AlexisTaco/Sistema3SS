@@ -43,6 +43,41 @@ namespace Sistema3SS_2020.Repositorio
 
         }
 
+        public List<Proyecciones> BuscarProyeccionPorIdPresupuesto(int id)
+        {
+            try
+            {
+                SqlCommand cmd = new SqlCommand();
+                DataSet ds = new DataSet();
+                SqlDataAdapter sqlDA;
+                cmd.Connection = con.conexion;
+                cmd.CommandText = "select * from PROYECCIONES where idPresupuesto =" + id;
+                cmd.CommandType = CommandType.Text;
+                sqlDA = new SqlDataAdapter(cmd);
+                sqlDA.Fill(ds);
+                var myData = ds.Tables[0].AsEnumerable().Select(r => new Proyecciones
+                {
+                    id = r.Field<int>("id"),
+                    idSemana = r.Field<int>("idSemana"),
+                    idPresupuesto = r.Field<int>("idPresupuesto"),
+                    incio_semana = r.Field<DateTime>("incio_semana"),
+                    final_semana = r.Field<DateTime>("final_semana"),
+                    gasto_estimado = r.Field<double>("gasto_estimado")
+                    
+
+                }
+
+                );
+                var list = myData.ToList(); // For if you really need a List and not IEnumerable
+                return list;
+            }
+            catch (Exception e)
+            {
+                var a = e.Message;
+                return null;
+            }
+        }
+
         internal SemanasTemporada buscarFechaSemanaPorId(int id)
         {
             try
@@ -111,7 +146,7 @@ namespace Sistema3SS_2020.Repositorio
                 con.abrirConeccion();
                 var fechaModify1 = proyeccion.incio_semana.ToString("yyyy-MM-dd");
                 var fechaModify2 = proyeccion.final_semana.ToString("yyyy-MM-dd");
-                string cadena = "Insert into PROYECCIONES(id,idPresupuesto,final_semana,incio_semana,gasto_estimado) values (" + proyeccion.id + "," + proyeccion.idPresupuesto + "," + fechaModify2 + "," + fechaModify1 + "," + proyeccion.gasto_estimado + ")";
+                string cadena = "Insert into PROYECCIONES(id,idPresupuesto,final_semana,incio_semana,gasto_estimado,idSemana) values (" + proyeccion.id + "," + proyeccion.idPresupuesto + "," + fechaModify2 + "," + fechaModify1 + "," + proyeccion.gasto_estimado + "," + proyeccion.idSemana + ")";
                 SqlCommand comando = new SqlCommand(cadena, con.conexion);
                 comando.ExecuteNonQuery();
                 con.conexion.Close();

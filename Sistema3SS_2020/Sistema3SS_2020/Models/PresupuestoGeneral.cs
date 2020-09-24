@@ -33,17 +33,17 @@ namespace Sistema3SS_2020.Models
             }
         }
 
-        internal List<Presupuesto> BuscarInformacionPresupuestos(List<Detalle_presupuesto> detalles)
+        public List<Presupuesto> BuscarInformacionPresupuestos(List<Detalle_presupuesto> detalles)
         {
             Concepcion concepcion = new Concepcion();
             Concepto_gastos concepto_Gastos = new Concepto_gastos();
             Granja granja = new Granja();
             Gastos gastos = new Gastos();
-            Detalle_presupuesto detalle = new Detalle_presupuesto();
             List<Presupuesto> presupuestos = new List<Presupuesto>();
             foreach (var detalle_pres in detalles)
             {
                 Presupuesto presupuesto = new Presupuesto();
+                Detalle_presupuesto detalle = new Detalle_presupuesto();
                 presupuesto = presupuesto.buscar(detalle_pres.idPresupuesto);
                 presupuesto.detalle = detalle;
                 presupuesto.detalle.concepcion = concepcion;

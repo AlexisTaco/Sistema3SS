@@ -60,6 +60,8 @@ namespace Sistema3SS_2020.Repositorio
             {
                 id = Convert.ToInt32(r.Field<int>("id")),
                 idUsuarioAutoriso = Convert.ToInt32(r.Field<int>("idUsuario")),
+                fecha_incial = Convert.ToDateTime(r.Field<DateTime>("fecha_inicial")),
+                fecha_final = Convert.ToDateTime(r.Field<DateTime>("fecha_final"))
             });
             var list = myData.ToList(); // For if you really need a List and not IEnumerable
             return list;
@@ -118,9 +120,7 @@ namespace Sistema3SS_2020.Repositorio
             try
             {
                 con.abrirConeccion();
-                var fechaModify1 = proy.fecha_incial.ToString("yyyy-MM-dd");
-                var fechaModify2 = proy.fecha_final.ToString("yyyy-MM-dd");
-                string cadena = "Insert into PROYECTOS(id,fecha_inicial,fecha_final,idUsuario) values (" + proy.id + "," + fechaModify1 + "," + fechaModify2 + ",'" + proy.idUsuarioAutoriso + "')";
+                string cadena = "Insert into PROYECTOS(id,fecha_inicial,fecha_final,idUsuario) values (" + proy.id + "," + proy.fecha_incial.ToShortDateString() + "," + proy.fecha_final.ToShortDateString() + "," + proy.idUsuarioAutoriso + ")";
                 SqlCommand comando = new SqlCommand(cadena, con.conexion);
                 comando.ExecuteNonQuery();
                 con.conexion.Close();

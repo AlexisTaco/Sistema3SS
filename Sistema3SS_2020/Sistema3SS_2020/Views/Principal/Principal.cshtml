@@ -10,8 +10,11 @@
     <link href="~/css/styles.css" rel="stylesheet" />
     <script src="~/js/NavBarDefinitivo.js"></script>
 </head>
-<body>
-    <!-- Vertical navbar -->
+    <body>
+            <partial name="/Views/Shared/NavBar.cshtml"/>
+    </body>
+@*<body>
+     Vertical navbar 
     <div class="vertical-nav bg-white" id="sidebar">
         <div class="py-4 px-3 mb-4 bg-light">
             <div class="media d-flex align-items-center">
@@ -81,14 +84,13 @@
             </li>
         </ul>
     </div>
-    <!-- End vertical navbar -->
-    <!-- Page content holder -->
+     End vertical navbar 
+     Page content holder 
     <div class="page-content p-5" id="content">
-        <!-- Toggle button -->
-        @*<button id="sidebarCollapse" type="button" class="btn btn-light bg-white rounded-pill shadow-sm px-4 mb-4"></button>*@
-        
-        <!-- Demo content -->
+         Toggle button 
+        <button id="sidebarCollapse" type="button" class="btn btn-light bg-white rounded-pill shadow-sm px-4 mb-4"></button>
+         Demo content 
      </div>
-    <!-- End demo content -->
-</body>
+     End demo content 
+</body>*@
 </html>
