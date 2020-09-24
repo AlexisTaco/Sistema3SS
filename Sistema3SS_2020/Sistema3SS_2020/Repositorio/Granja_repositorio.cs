@@ -58,6 +58,37 @@ namespace Sistema3SS_2020.Repositorio
             }
         }
 
+        internal Granja BuscarPorId(int idGranja)
+        {
+            try
+            {
+                SqlCommand cmd = new SqlCommand();
+                DataSet ds = new DataSet();
+                SqlDataAdapter sqlDA;
+                cmd.Connection = con.conexion;
+                cmd.CommandText = "select * from GRANJAS where id = " + idGranja  + "";
+                cmd.CommandType = CommandType.Text;
+                sqlDA = new SqlDataAdapter(cmd);
+                sqlDA.Fill(ds);
+                var myData = ds.Tables[0].AsEnumerable().Select(r => new Granja
+                {
+                    id = r.Field<int>("id"),
+                    nombre = r.Field<string>("Nombre")
+
+
+                }
+
+                );
+                var list = myData.ToList().FirstOrDefault(); // For if you really need a List and not IEnumerable
+                return list;
+            }
+            catch (Exception e)
+            {
+                var a = e.Message;
+                return null;
+            }
+        }
+
         internal Granja ConsultarPorId(int id)
         {
             try

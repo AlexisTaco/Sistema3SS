@@ -12,16 +12,6 @@ namespace Sistema3SS_2020.Controllers
     {
         Proyecto proyecto = new Proyecto();
         // GET: PrincipalController
-        public ActionResult Presupuesto()
-        {
-            return View(proyecto);
-        }
-        public void crearPresupuesto(int id)
-        {
-            proyecto.BuscarDetallePorId(id);
-            proyecto.BuscarGranjasEnProyecto(proyecto.detalle.id);
-            RedirectToAction("Presupuesto");
-        }
         public ActionResult Principal()
         {
             ViewBag.UserLogin = HttpContext.Session.GetString("NombreUsuario");

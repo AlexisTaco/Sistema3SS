@@ -1,9 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "D8hYlwpG1PzZWsFzKQSgXnLpMu6W6kFg3aatKJqFGGYNGQz1Tc9LdRwKOKXAx3eweKvrNuGmu9Z0L8Y8cXDzSw==",
+  "dgSpecHash": "47DA4sKB8gYglLPxILhL/RV0vKj9ZYdJAONGz9ICrdWcMh7/T4LPhYiLjcmNMaRS0Eyrutnt3AylPEIpA3Re9w==",
   "success": true,
   "projectFilePath": "C:\\Users\\Edgaro\\Desktop\\proyectoSistema3SS\\Repositorio\\Sistema3SS\\Sistema3SS_2020\\Sistema3SS_2020\\Sistema3SS_2020.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\Edgaro\\.nuget\\packages\\bootstrap\\5.0.0-alpha1\\bootstrap.5.0.0-alpha1.nupkg.sha512",
     "C:\\Users\\Edgaro\\.nuget\\packages\\microsoft.aspnetcore.cryptography.internal\\1.1.0\\microsoft.aspnetcore.cryptography.internal.1.1.0.nupkg.sha512",
     "C:\\Users\\Edgaro\\.nuget\\packages\\microsoft.aspnetcore.dataprotection\\1.1.0\\microsoft.aspnetcore.dataprotection.1.1.0.nupkg.sha512",
     "C:\\Users\\Edgaro\\.nuget\\packages\\microsoft.aspnetcore.dataprotection.abstractions\\1.1.0\\microsoft.aspnetcore.dataprotection.abstractions.1.1.0.nupkg.sha512",
@@ -46,6 +47,7 @@
     "C:\\Users\\Edgaro\\.nuget\\packages\\netstandard.library\\1.6.1\\netstandard.library.1.6.1.nupkg.sha512",
     "C:\\Users\\Edgaro\\.nuget\\packages\\newtonsoft.json\\11.0.2\\newtonsoft.json.11.0.2.nupkg.sha512",
     "C:\\Users\\Edgaro\\.nuget\\packages\\nuget.frameworks\\4.7.0\\nuget.frameworks.4.7.0.nupkg.sha512",
+    "C:\\Users\\Edgaro\\.nuget\\packages\\popper.js\\1.16.0\\popper.js.1.16.0.nupkg.sha512",
     "C:\\Users\\Edgaro\\.nuget\\packages\\runtime.debian.8-x64.runtime.native.system.security.cryptography.openssl\\4.3.0\\runtime.debian.8-x64.runtime.native.system.security.cryptography.openssl.4.3.0.nupkg.sha512",
     "C:\\Users\\Edgaro\\.nuget\\packages\\runtime.fedora.23-x64.runtime.native.system.security.cryptography.openssl\\4.3.0\\runtime.fedora.23-x64.runtime.native.system.security.cryptography.openssl.4.3.0.nupkg.sha512",
     "C:\\Users\\Edgaro\\.nuget\\packages\\runtime.fedora.24-x64.runtime.native.system.security.cryptography.openssl\\4.3.0\\runtime.fedora.24-x64.runtime.native.system.security.cryptography.openssl.4.3.0.nupkg.sha512",

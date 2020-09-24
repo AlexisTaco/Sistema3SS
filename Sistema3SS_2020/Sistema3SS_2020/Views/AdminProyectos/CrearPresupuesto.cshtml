@@ -1,0 +1,149 @@
+﻿@model Sistema3SS_2020.Models.Proyecto
+<html lang="en">
+<head>
+</head>
+<body class="bg-light">
+    <partial name="/Views/Shared/NavBar.cshtml" />
+    <!-- Modal -->
+    <div class="container-xl">
+        <div class="table-responsive">
+            <div class="table-wrapper">
+                <div class="table-title">
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <h2>Agregar <b>Presupuesto a proyecto</b></h2>
+                        </div>
+                        <div class="col-sm-6">
+                            <a class="btn btn-danger" data-toggle="tooltip" title="Regresar a lista de proyectos" href="@Url.Action("Index","AdminProyectos")"><i class="material-icons">&#xe408;</i> <span>Atras</span></a>
+                        </div>
+                    </div>
+                </div>
+                <table class="table table-striped table-hover">
+                    <thead>
+                    </thead>
+                    <tbody>
+                        <form method="post" action="@Url.Action("CrearPresupuesto","AdminProyectos")">
+                            <div class="container">
+                                <div class="row mb-4">
+                                    <div class="col-4 mb-4">
+                                        <div class="col-10 mb-0">
+                                            <label for="country">Presupuesto</label>
+                                            <select onchange="SecuenciaDeCambios();" class="custom-select d-block w-100" id="TipoPres" name="TipoPres" required="">
+                                                <option value="0">Tipo...</option>
+                                                @foreach (var Presu in Model.presupuesto.BuscarTiposDePresupuesto())
+                                                {
+                                                    <option value="@Presu.id">@Presu.Nombre</option>
+                                                }
+                                            </select>
+                                            <div class="invalid-feedback">
+                                                Por favor de selccionar un elemnto valido
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-4 ">
+                                        <div class="col-10 mb-0">
+                                            <label for="state">Granja</label>
+                                            <select disabled onchange="jsFuncionNumeroEstanques();" name="SelectGranja" class="custom-select d-block w-100" id="SelectGranja" runat="server">
+                                                <option value="0">Nombre...</option>
+                                                @foreach (var granja in Model.granjas)
+                                                {
+                                                    <option value="@granja.id">@granja.nombre</option>
+                                                }
+                                            </select>
+                                            <div class="invalid-feedback">
+                                                Por favor de selccionar un elemnto valido
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-4 ">
+                                        <div class="col-10 mb-0">
+                                            <label for="state">Concepción</label>
+                                            <select disabled onchange="jsFuncionNumeroEstanques();" name="SelectConcepcion" class="custom-select d-block w-100" id="SelectConcepcion">
+                                                <option value="0">Selecionar...</option>
+                                                @foreach (var Concepcion in Model.presupuesto.BuscarTiposDeConcepcion())
+                                                {
+                                                    <option value="@Concepcion.id">@Concepcion.nombres</option>
+                                                }
+                                            </select>
+                                            <div class="invalid-feedback">
+                                                Por favor de selccionar un elemnto valido
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-4">
+                                        <div class="col-10 mb-0" id="Est1">
+                                            <label for="state">Selecion estanque</label>
+                                            <select disabled name="Selectestanquest" class="custom-select d-block w-100" id="Selectestanquest">
+                                                <option value="">Numero...</option>
+                                            </select>
+                                            <div class="invalid-feedback">
+                                                Por favor de selccionar un elemnto valido
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-4">
+                                        <div class="col-10 mb-0">
+                                            <label for="country">Gasto</label>
+                                            <select class="custom-select d-block w-100" name="SelectGasto" id="SelectGasto" required="">
+                                                <option value="">Nombre...</option>
+                                                @foreach (var Gastos in Model.presupuesto.BuscarTiposConceptoGasto())
+                                                {
+                                                    <option value="@Gastos.id">@Gastos.ConceptoDes</option>
+                                                }
+                                            </select>
+                                            <div class="invalid-feedback">
+                                                Por favor de selccionar un elemnto valido
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-4">
+                                        <div class="col-10 mb-0">
+                                            <label for="country">Concepto</label>
+                                            <select class="custom-select d-block w-100" name="SelectConcepto" id="SelectConcepto" required="">
+                                                <option value="">contenido...</option>
+                                                @foreach (var Gastos in Model.presupuesto.BuscarTiposGastos())
+                                                {
+                                                    <option value="@Gastos.id">@Gastos.Nombre</option>
+                                                }
+                                            </select>
+                                            <div class="invalid-feedback">
+                                                Por favor de selccionar un elemnto valido
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <br />
+                                    <br />
+                                    <!-- Small modal -->
+                                    <div class="col-4 m-2">
+                                        <button type="button" class="btn btn-secondary btn-sm" data-toggle="modal" data-target=".bd-example-modal-sm"> <a href="#" role="button" class="btn btn-secondary popover-test" title="Solo para la Concepcíon 'Multiestanque'" data-content="Solo para la Concepcíon 'Multiestanque'">Estanques</a></button>
+                                    </div>
+                                    <div class="modal fade bd-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog modal-sm">
+                                            <div class="modal-content">
+                                                <div class="col-4">
+                                                    <div class="col-10 mb-0" id="Est1">
+                                                        <div class="col-10 mb-0" id="Est2">
+                                                            <div class="container" id="checkboxes">
+
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- Small modal /-->
+                                </div>
+                                <br />
+                                <br />
+                                <button type="submit" class="btn btn-primary">Crear Presupuesto</button>
+                            </div>
+                        </form>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

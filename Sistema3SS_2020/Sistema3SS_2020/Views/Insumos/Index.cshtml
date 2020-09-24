@@ -1,53 +1,46 @@
 ﻿@model IEnumerable<Sistema3SS_2020.Models.Insumos>
 
+<br />
 <p>
-    <a asp-action="Create">Create New</a>
+    <input class="alert-success" type="button" onclick="location.href='@Url.Action("Create", "Insumos")'" value="Agregar nuevo insumo" />
 </p>
-<table class="table">
-    <thead>
+<table class="table table-striped">
+    <thead  class="thead-light">
         <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.id)
+            <th class="text-center">
+               <a>Clave de insumo</a>
             </th>
-            <th>
-                @Html.DisplayNameFor(model => model.id_tipo)
+            <th class="text-center">
+                <a>Nombre</a>
             </th>
-            <th>
-                @Html.DisplayNameFor(model => model.nombre)
+            <th class="text-center">
+                <a>Inidad medida <span class="alert-info">(kg./Pul./Etc..)</span> </a>
             </th>
-            <th>
-                @Html.DisplayNameFor(model => model.unidad_medida)
+            <th class="text-center">
+                <a>Cantidad</a>
             </th>
-            <th>
-                @Html.DisplayNameFor(model => model.cantidad)
-            </th>
-            <th></th>
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
+        @foreach (var item in Model)
+        {
         <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.id)
-            </td>
-            <td>
+            <td class="text-center">
                 @Html.DisplayFor(modelItem => item.id_tipo)
             </td>
-            <td>
+            <td class="text-center">
                 @Html.DisplayFor(modelItem => item.nombre)
             </td>
-            <td>
+            <td class="text-center">
                 @Html.DisplayFor(modelItem => item.unidad_medida)
             </td>
-            <td>
+            <td class="text-center">
                 @Html.DisplayFor(modelItem => item.cantidad)
             </td>
             <td>
-                @Html.ActionLink("Edit", "Edit", new {item.id}) |
-                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+                <input class="alert" type="button" onclick="location.href='@Url.Action("Edit", "Insumos",new { item.id })'" value="Editar caracteristicas" />
             </td>
         </tr>
-}
+        }
     </tbody>
 </table>

@@ -1,55 +1,96 @@
-﻿<link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-<script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
-<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
-<!------ Include the above in your HEAD tag ---------->
+﻿<!------ Include the above in your HEAD tag ---------->
 
-<nav class="navbar navbar-default navbar-static">
-    <div class="navbar-header">
-		<button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".js-navbar-collapse">
-            <span class="sr-only"></span>
-			<span class="icon-bar"></span>
-			<span class="icon-bar"></span>
-			<span class="icon-bar"></span>
-		</button>
-        <a class="navbar-brand" href="#">Bienvenido @ViewBag.UserLogin </a>
-	</div>
-	
-	
-	<div class="collapse navbar-collapse js-navbar-collapse">
-		<ul class="nav navbar-nav">
-			<li class="dropdown dropdown-large">
-				<a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b>
-				<ul class="dropdown-menu dropdown-menu-large row">
-					<li class="col-sm-3">
-						<ul>
-							
-							<li class="dropdown-header">Usuarios</li>
-                            <li><button onclick="location.href='@Url.Action("Index", "Usuario")'">Ver lista</button></li>
-						</ul>
-					</li>
-					<li class="col-sm-3">
-						<ul>
-							<li class="dropdown-header">Granjas</li>
-                            <li><button onclick="location.href='@Url.Action("Index", "Granja")'">Ver lista</button></li>
-						</ul>
-					</li>
-					<li class="col-sm-3">
-                        <ul>
-                            <li class="dropdown-header">Insumos</li>
-                            <li><button onclick="location.href='@Url.Action("Index", "Insumos")'">Ver lista</button></li>
-                        </ul>
-					</li>
-					<li class="col-sm-3">
-                        <ul>
-                            <li class="dropdown-header">Proyectos</li>
-                            <li><button onclick="location.href='@Url.Action("Index", "AdminProyectos")'">Ver lista</button></li>
-                            <li><button onclick="location.href='@Url.Action("CrearProyecto", "AdminProyectos")'">Crear proyecto</button></li>
-                        </ul>
-					</li>
-				</ul>
-				
-			</li>
-		</ul>
-		
-	</div><!-- /.nav-collapse -->
-</nav>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script src="~/lib/jquery/jquery.js"></script>
+    <link href="~/css/bootstrap-reboot.min.css" rel="stylesheet" />
+    <link href="~/css/bootstrap-grid.min.css" rel="stylesheet" />
+    <link href="~/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/css/styles.css" rel="stylesheet" />
+    <script src="~/js/NavBarDefinitivo.js"></script>
+</head>
+    <body>
+            <partial name="/Views/Shared/NavBar.cshtml"/>
+    </body>
+@*<body>
+     Vertical navbar 
+    <div class="vertical-nav bg-white" id="sidebar">
+        <div class="py-4 px-3 mb-4 bg-light">
+            <div class="media d-flex align-items-center">
+                <img src="/Imagenes/61763841_1701939573285217_3737773595187740672_o.jpg" />
+                <div class="media-body">
+                    <h4 class="m-0">@ViewBag.UserLogin</h4>
+                    <p class="font-weight-light text-muted mb-0">Administrador</p>
+                </div>
+            </div>
+        </div>
+
+        <p class="text-gray font-weight-bold text-uppercase px-3 small pb-4 mb-0">PRINCIPAL</p>
+
+        <ul class="nav flex-column bg-white mb-0">
+            <li class="nav-item">
+                <a href="@Url.Action("Index", "AdminProyectos")" class="nav-link text-dark font-italic bg-light">
+                    <i class="fa fa-th-large mr-3 text-primary fa-fw"></i>
+                    Administrar proyectos
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="@Url.Action("Index", "Usuario")" class="nav-link text-dark font-italic">
+                    <i class="fa fa-address-card mr-3 text-primary fa-fw"></i>
+                    Usuarios
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="#" class="nav-link text-dark font-italic">
+                    <i class="fa fa-cubes mr-3 text-primary fa-fw"></i>
+                    Inverntario
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="#" class="nav-link text-dark font-italic">
+                    <i class="fa fa-picture-o mr-3 text-primary fa-fw"></i>
+                   Facturas
+                </a>
+            </li>
+        </ul>
+
+        <p class="text-gray font-weight-bold text-uppercase px-3 small py-4 mb-0">Secundarios</p>
+
+        <ul class="nav flex-column bg-white mb-0">
+            <li class="nav-item">
+                <a href="#" class="nav-link text-dark font-italic">
+                    <i class="fa fa-area-chart mr-3 text-primary fa-fw"></i>
+                    Insumos
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="@Url.Action("Index", "Granja")" class="nav-link text-dark font-italic">
+                    <i class="fa fa-bar-chart mr-3 text-primary fa-fw"></i>
+                    Granjas
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="#" class="nav-link text-dark font-italic">
+                    <i class="fa fa-pie-chart mr-3 text-primary fa-fw"></i>
+                    VACIO
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="#" class="nav-link text-dark font-italic">
+                    <i class="fa fa-line-chart mr-3 text-primary fa-fw"></i>
+                    VACIO
+                </a>
+            </li>
+        </ul>
+    </div>
+     End vertical navbar 
+     Page content holder 
+    <div class="page-content p-5" id="content">
+         Toggle button 
+        <button id="sidebarCollapse" type="button" class="btn btn-light bg-white rounded-pill shadow-sm px-4 mb-4"></button>
+         Demo content 
+     </div>
+     End demo content 
+</body>*@
+</html>

@@ -1,0 +1,227 @@
+﻿@model Sistema3SS_2020.Models.Proyecto
+<html>
+<head>
+  
+</head>
+<body>
+    <partial name="/Views/Shared/NavBar.cshtml" />
+    <br />
+    <br />
+    <br />
+    <div class="container-xl">
+        <div class="table-responsive">
+            <div class="table-wrapper">
+                <div class="table-title">
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <h2>Administrar <b>Presupuestos</b> de proyecto</h2>
+                        </div>
+                        <div class="col-sm-6">
+                            <a class="btn btn-danger" data-toggle="tooltip" title="Regresar a lista de proyectos" href="@Url.Action("Index","AdminProyectos")"><i class="material-icons">&#xe408;</i> <span>Atras</span></a>
+                        </div>
+                    </div>
+                </div>
+                <table class="table">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Economico</th>
+                            <th scope="col">Gasto</th>
+                            <th scope="col">Concepto</th>
+                            <th scope="col">$</th>
+
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @{int count1 = 0; }
+
+                        @foreach (var presu in Model.presupuestos)
+                        {
+                            int numeropresu = presu.id;
+                            @if (presu.TipoPrsupuesto.Nombre.Trim() == "Económico")
+                            {
+                                <tr>
+                                    <td>@count1</td>
+                                    <td>Presupuesto de @presu.detalle.concepcion.nombres en granja        <spam>@presu.detalle.granja.nombre</spam> </td>
+                                    <td>El gasto se debe a @presu.detalle.concepto_Gastos.ConceptoDes </td>
+                                    <td>se describe como: @presu.detalle.gastos.Nombre </td>
+                                    <td>$@Model.presupuesto.SacarTotalProyeccion(presu.id) </td>
+                                    <td>
+                                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#Taco-@presu.id" title="Agregar proyección">
+                                            <i class="material-icons">&#xE147;</i>
+                                        </button>
+                                        <form method="post">
+                                            <div class="modal fade" id="Taco-@presu.id" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                                                <div class="modal-dialog modal-dialog-centered" role="document">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <h5 class="modal-title" id="">PREOYECCIONES</h5>
+                                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                <span aria-hidden="true">&times;</span>
+                                                            </button>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                            <div class="container">
+                                                                <label>Semanas</label>
+                                                                <select name="SelectSemana-@presu.id" id="SelectSemana-@presu.id">
+                                                                    @{int CountSem = 1; }
+                                                                    @foreach (var semana in Model.semanasTemporada)
+                                                                    {
+                                                                        <option value="@semana.id">Semana @CountSem del @semana.fecha_inicial.ToShortDateString() - @semana.fecha_final.ToShortDateString() </option>
+                                                                        CountSem++;
+                                                                    }
+                                                                </select>
+                                                                <br />
+                                                                <label><spam class="alert-dark">$</spam> </label>
+                                                                <input id="CantidadProyeccion-@presu.id" name="CantidadProyeccion" class="text-body" placeholder="Agregar cantidad..." title="Agregar cantidad estimada" />
+                                                            </div>
+                                                            <table class="table">
+                                                                <thead class="thead-dark">
+                                                                    <tr>
+                                                                        <th scope="col">SEMANA</th>
+                                                                        <th scope="col">Cantidad proyectada</th>
+                                                                    </tr>
+                                                                </thead>
+                                                                <tbody>
+                                                                    @foreach (var proyeccion in Model.presupuesto.Proyeccion.BuscarPorIdPresupuesto(presu.id))
+                                                                    {
+                                                                        <tr>
+                                                                            <th scope="row">@proyeccion.idSemana</th>
+                                                                            <th scope="row">$ @proyeccion.gasto_estimado</th>
+                                                                        </tr>
+                                                                        <tr>
+                                                                        </tr>
+                                                                    }
+                                                                    <tr>
+                                                                        <th>Total $@Model.presupuesto.SacarTotalProyeccion(presu.id)</th>
+                                                                    </tr>
+                                                                </tbody>
+                                                            </table>
+                                                            <div class="modal-footer">
+                                                                <button class="btn btn-primary" value="@presu.id" id="presuID" name="presuID"> Registrar Proyección</button>
+                                                            </div>
+                                                        </div>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </td>
+                                </tr>
+                            }
+                            count1++;
+                        }
+                        <tr>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                            <th>Total $@Model.presupuesto.gasto_estimado_total_proyecciones_eco </th>
+                        </tr>
+                    </tbody>
+                </table>
+                <table class="table">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Producción</th>
+                            <th scope="col">Gasto</th>
+                            <th scope="col">Concepto</th>
+                            <th scope="col">$</th>
+
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @{int count2 = 0; }
+
+                        @foreach (var presu2 in Model.presupuestos)
+                        {
+                            int numeropresu = presu2.id;
+                            @if (presu2.TipoPrsupuesto.Nombre.Trim() == "Producción")
+                            {
+                                <tr>
+                                    <td>@count1</td>
+                                    <td>Presupuesto de @presu2.detalle.concepcion.nombres en granja <spam>@presu2.detalle.granja.nombre</spam> </td>
+                                    <td>El gasto se debe a @presu2.detalle.concepto_Gastos.ConceptoDes </td>
+                                    <td>se describe como: @presu2.detalle.gastos.Nombre </td>
+                                    <td>$@Model.presupuesto.SacarTotalProyeccion(presu2.id) </td>
+                                    <td>
+                                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#Taco-@presu2.id" title="Agregar proyección">
+                                            <i class="material-icons">&#xE147;</i>
+                                        </button>
+                                        <form method="post">
+                                            <div class="modal fade" id="Taco-@presu2.id" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                                                <div class="modal-dialog modal-dialog-centered" role="document">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <h5 class="modal-title" id="">PREOYECCIONES</h5>
+                                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                <span aria-hidden="true">&times;</span>
+                                                            </button>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                            <div class="container">
+                                                                <label>Semanas</label>
+                                                                <select name="SelectSemana-@presu2.id" id="SelectSemana-@presu2.id">
+                                                                    @{int CountSem2 = 1; }
+                                                                    @foreach (var semana in Model.semanasTemporada)
+                                                                    {
+                                                                        <option value="@semana.id">Semana @CountSem2 del @semana.fecha_inicial.ToShortDateString() - @semana.fecha_final.ToShortDateString() </option>
+                                                                        CountSem2++;
+                                                                    }
+                                                                </select>
+                                                                <br />
+                                                                <label><spam class="alert-dark">$</spam> </label>
+                                                                <input id="CantidadProyeccion-@presu2.id" name="CantidadProyeccion" class="text-body" placeholder="Agregar cantidad..." title="Agregar cantidad estimada" />
+                                                            </div>
+                                                            <table class="table">
+                                                                <thead class="thead-dark">
+                                                                    <tr>
+                                                                        <th scope="col">SEMANA</th>
+                                                                        <th scope="col">Cantidad proyectada</th>
+                                                                    </tr>
+                                                                </thead>
+                                                                <tbody>
+                                                                    @foreach (var proyeccion in Model.presupuesto.Proyeccion.BuscarPorIdPresupuesto(presu2.id))
+                                                                    {
+                                                                        <tr>
+                                                                            <th scope="row">@proyeccion.idSemana</th>
+                                                                            <th scope="row">$ @proyeccion.gasto_estimado</th>
+                                                                        </tr>
+                                                                        <tr>
+                                                                        </tr>
+                                                                    }
+                                                                    <tr>
+                                                                        <th>Total $@Model.presupuesto.SacarTotalProyeccion(presu2.id)</th>
+                                                                    </tr>
+                                                                </tbody>
+                                                            </table>
+                                                            <div class="modal-footer">
+                                                                <button class="btn btn-primary" value="@presu2.id" id="presuID" name="presuID"> Registrar Proyección</button>
+                                                            </div>
+                                                        </div>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </td>
+                                </tr>
+                            }
+                            count2++;
+                        }
+                        <tr>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                            <th>Total $@Model.presupuesto.gasto_estimado_total_proyecciones_pro </th>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

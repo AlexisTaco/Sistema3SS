@@ -16,6 +16,11 @@ namespace Sistema3SS_2020.Controllers
         {
             return View(usuario.MostrarLista());
         }
+        [HttpGet]
+        public ActionResult test()
+        {
+            return View();
+        }
 
         // GET: UsuarioController/Details/5
         public ActionResult Details(int id)

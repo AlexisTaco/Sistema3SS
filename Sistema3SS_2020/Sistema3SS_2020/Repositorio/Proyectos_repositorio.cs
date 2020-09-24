@@ -60,6 +60,28 @@ namespace Sistema3SS_2020.Repositorio
             {
                 id = Convert.ToInt32(r.Field<int>("id")),
                 idUsuarioAutoriso = Convert.ToInt32(r.Field<int>("idUsuario")),
+                fecha_incial = Convert.ToDateTime(r.Field<DateTime>("fecha_inicial")),
+                fecha_final = Convert.ToDateTime(r.Field<DateTime>("fecha_final"))
+            });
+            var list = myData.ToList(); // For if you really need a List and not IEnumerable
+            return list;
+        }
+
+        internal List<SemanasTemporada> BuscarSemanasTempo()
+        {
+            SqlCommand cmd = new SqlCommand();
+            DataSet ds = new DataSet();
+            SqlDataAdapter sqlDA;
+            cmd.Connection = con.conexion;
+            cmd.CommandText = "select * from SEMANAS_TEMPORADA";
+            cmd.CommandType = CommandType.Text;
+            sqlDA = new SqlDataAdapter(cmd);
+            sqlDA.Fill(ds);
+            var myData = ds.Tables[0].AsEnumerable().Select(r => new SemanasTemporada
+            {
+                id = Convert.ToInt32(r.Field<int>("id")),
+                fecha_inicial = Convert.ToDateTime(r.Field<DateTime>("fecha_inicial")),
+                fecha_final = Convert.ToDateTime(r.Field<DateTime>("fecha_final")),
             });
             var list = myData.ToList(); // For if you really need a List and not IEnumerable
             return list;
@@ -98,9 +120,7 @@ namespace Sistema3SS_2020.Repositorio
             try
             {
                 con.abrirConeccion();
-                var fechaModify1 = proy.fecha_incial.ToString("yyyy-MM-dd");
-                var fechaModify2 = proy.fecha_final.ToString("yyyy-MM-dd");
-                string cadena = "Insert into PROYECTOS(id,fecha_inicial,fecha_final,idUsuario) values (" + proy.id + "," + fechaModify1 + "," + fechaModify2 + ",'" + proy.idUsuarioAutoriso + "')";
+                string cadena = "Insert into PROYECTOS(id,fecha_inicial,fecha_final,idUsuario) values (" + proy.id + "," + proy.fecha_incial.ToShortDateString() + "," + proy.fecha_final.ToShortDateString() + "," + proy.idUsuarioAutoriso + ")";
                 SqlCommand comando = new SqlCommand(cadena, con.conexion);
                 comando.ExecuteNonQuery();
                 con.conexion.Close();
@@ -271,6 +291,38 @@ namespace Sistema3SS_2020.Repositorio
                 var a = e.Message;
                 return null;
             }
+        }
+
+        public List<Concepcion> BuscarConcepciones()
+        {
+            try
+            {
+                SqlCommand cmd = new SqlCommand();
+                DataSet ds = new DataSet();
+                SqlDataAdapter sqlDA;
+                cmd.Connection = con.conexion;
+                cmd.CommandText = "select * from CONCEPCION";
+                cmd.CommandType = CommandType.Text;
+                sqlDA = new SqlDataAdapter(cmd);
+                sqlDA.Fill(ds);
+                var myData = ds.Tables[0].AsEnumerable().Select(r => new Concepcion
+                {
+                    id = r.Field<int>("id"),
+                    nombres = r.Field<string>("Nombre")
+
+                }
+
+                );
+                var list = myData.ToList(); // For if you really need a List and not IEnumerable
+                return list;
+            }
+            catch (Exception e)
+            {
+                var a = e.Message;
+                return null;
+            }
+
+
         }
     }
 }
