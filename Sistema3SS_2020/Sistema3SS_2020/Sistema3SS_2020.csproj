@@ -4,4 +4,27 @@
     <TargetFramework>netcoreapp3.1</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Content Remove="Views\Principal\index.cshtml" />
+    <Content Remove="Views\Shared\test.cshtml" />
+    <Content Remove="wwwroot\js\bootstrap.bundle.min.js" />
+    <Content Remove="wwwroot\js\bootstrap.min.js" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="Views\Shared\test.cshtml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="bootstrap" Version="5.0.0-alpha1" />
+    <PackageReference Include="Microsoft.AspNetCore.Session" Version="1.1.0" />
+    <PackageReference Include="Microsoft.Data.Sqlite.Core" Version="5.0.0-preview.8.20407.4" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="3.1.4" />
+    <PackageReference Include="System.Data.SqlClient" Version="4.8.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="wwwroot\Scrips\" />
+  </ItemGroup>
+
 </Project>
