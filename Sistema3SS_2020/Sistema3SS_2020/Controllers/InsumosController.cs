@@ -10,11 +10,11 @@ namespace Sistema3SS_2020.Controllers
 {
     public class InsumosController : Controller
     {
-        Insumos ins = new Insumos();
+        
         // GET: InsumosController
         public ActionResult Index()
         {
-            return View(ins.MostrarLista()) ;
+            return View();
         }
 
         // GET: InsumosController/Details/5
@@ -36,15 +36,16 @@ namespace Sistema3SS_2020.Controllers
         {
             try
             {
-                var ins = OrdenarColeccion(collection);
-                if (ins.Insertar(ins))
-                {
-                    return RedirectToAction(nameof(Index));
-                }
-                else
-                {
-                    return RedirectToAction(nameof(Index));
-                }
+                //var ins = OrdenarColeccion(collection);
+                //if (ins.Insertar(ins))
+                //{
+                //    return RedirectToAction(nameof(Index));
+                //}
+                //else
+                //{
+                //    return RedirectToAction(nameof(Index));
+                //}
+                return RedirectToAction(nameof(Index));
 
             }
             catch
@@ -94,16 +95,16 @@ namespace Sistema3SS_2020.Controllers
                 return View();
             }
         }
-        private Insumos OrdenarColeccion(IFormCollection collection)
-        {
-            this.ins.id = Convert.ToInt32(collection["id"]);
-            this.ins.nombre = collection["nombre"].ToString();
-            this.ins.unidad_medida = collection["unidad_medida"].ToString();
-            this.ins.id_tipo = Convert.ToInt32(collection["id_tipo"]);
-            this.ins.cantidad = Convert.ToDouble(collection["cantidad"].ToString());
-            return this.ins;
+        //private Insumos OrdenarColeccion(IFormCollection collection)
+        //{
+        //    this.ins.id = Convert.ToInt32(collection["id"]);
+        //    this.ins.nombre = collection["nombre"].ToString();
+        //    this.ins.unidad_medida = collection["unidad_medida"].ToString();
+        //    this.ins.id_tipo = Convert.ToInt32(collection["id_tipo"]);
+        //    this.ins.cantidad = Convert.ToDouble(collection["cantidad"].ToString());
+        //    return this.ins;
 
 
-        }
+        //}
     }
 }
