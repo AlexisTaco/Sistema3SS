@@ -21,35 +21,32 @@
                     <tbody>
                         <div class="flex-row">
                             <div class="col-md-10">
-                                <form asp-action="Create">
+                                <form >
                                     <div class="active col-md-3">
-                                        <label hidden asp-for="id" class="control-label"></label>
+                                        @*<label hidden asp-for="id" class="control-label"></label>
                                         <input hidden asp-for="id" class="form-control" />
-                                        <span asp-validation-for="id" class="text-danger"></span>
+                                        <span asp-validation-for="id" class="text-danger"></span>*@
                                     </div>
                                     <div class="active col-md-5">
-                                        <label class="control-label"> Fecha de inicio</label>
+                                        @*<label class="control-label"> Fecha de inicio</label>
                                         <input asp-for="fecha_incial" class="form-control" />
-                                        <span asp-validation-for="fecha_incial" class="text-danger"></span>
+                                        <span asp-validation-for="fecha_incial" class="text-danger"></span>*@
                                     </div>
                                     <div class="col-md-5">
-                                        <label class="control-label"> Fecha de culminación</label>
+                                        @*<label class="control-label"> Fecha de culminación</label>
                                         <input asp-for="fecha_final" class="form-control" />
-                                        <span asp-validation-for="fecha_final" class="text-danger"></span>
+                                        <span asp-validation-for="fecha_final" class="text-danger"></span>*@
                                     </div>
                                     <div class="col-md-7">
-                                        <label hidden asp-for="idUsuarioAutoriso" class="control-label"></label>
+                                        @*<label hidden asp-for="idUsuarioAutoriso" class="control-label"></label>
                                         <input hidden asp-for="idUsuarioAutoriso" class="form-control" />
-                                        <span asp-validation-for="idUsuarioAutoriso" class="text-danger"></span>
+                                        <span asp-validation-for="idUsuarioAutoriso" class="text-danger"></span>*@
                                     </div>
                                     <div class="col-md-7">
                                         <label class="control-label">Granjas</label>
                                         <select onchange="AgregarGranja();" name="SelectGranja" class="custom-select d-block w-100" id="SelectGranja" runat="server">
                                             <option value="0">Nombre...</option>
-                                            @foreach (var granja in Model.granjas)
-                                            {
-                                                <option value="@granja.id">@granja.nombre</option>
-                                            }
+                                            
                                         </select>
                                         <div>
                                             <label name="ejempo1" class="form-control" runat="server">Granjas añadidas</label>
@@ -61,10 +58,7 @@
                                         <label class="control-label"> Temporada</label>
                                         <select name="SelectTempo" class="custom-select d-block w-100" id="SelectTempo" runat="server">
                                             <option value="0">Nombre...</option>
-                                            @foreach (var tempo in Model.temporadas)
-                                            {
-                                                <option value="@tempo.id">@tempo.fecha_inicial - @tempo.fecha_final</option>
-                                            }
+                                            
                                         </select>
                                     </div>
 

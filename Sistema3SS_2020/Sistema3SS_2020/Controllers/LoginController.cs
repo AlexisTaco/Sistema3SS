@@ -10,8 +10,13 @@ namespace Sistema3SS_2020.Controllers
 {
     public class LoginController : Controller
     {
-        Coneccion con = new Coneccion();
-        
+        private Sistema3SSPruebasContext _context;
+
+        public LoginController(Sistema3SSPruebasContext context)
+        {
+            this._context = context;
+        }
+
         // GET: LoginController
         public ActionResult Index()
         {
@@ -24,11 +29,13 @@ namespace Sistema3SS_2020.Controllers
             if (ModelState.IsValid)
             {
                 Usuario usuario = new Usuario();
-                var relogin = usuario.Iniciar_sesion(nombre_usuario,contrasena_usuario);
-                if (relogin != false)
+                var relogin = _context.Usuarios.Where(x => x.Contrasena == contrasena_usuario && x.CorreoElectronico == nombre_usuario).ToList();
+                if (relogin.Count == 1)
                 {
                     HttpContext.Session.SetString("NombreUsuario",nombre_usuario);
                     HttpContext.Session.SetString("ContrasenaUsuario", contrasena_usuario);
+                    HttpContext.Session.SetString("IdUsuario", relogin[0].Id.ToString());
+
                     return   RedirectToAction("Principal", "Principal");
 
                 }
@@ -77,27 +84,6 @@ namespace Sistema3SS_2020.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit(int id, IFormCollection collection)
-        {
-            try
-            {
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
-        }
-
-        // GET: LoginController/Delete/5
-        public ActionResult Delete(int id)
-        {
-            return View();
-        }
-
-        // POST: LoginController/Delete/5
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, IFormCollection collection)
         {
             try
             {

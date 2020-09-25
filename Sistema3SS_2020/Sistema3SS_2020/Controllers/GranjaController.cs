@@ -10,11 +10,11 @@ namespace Sistema3SS_2020.Controllers
 {
     public class GranjaController : Controller
     {
-        Granja granja = new Granja();
+        
         // GET: GranjaController
         public ActionResult Index()
         {
-            return View(granja.MostrarLista());
+            return View();
         }
 
         // GET: GranjaController/Details/5
@@ -36,15 +36,9 @@ namespace Sistema3SS_2020.Controllers
         {
             try
             {
-                var gran = OrdenarColeccion(collection);
-                if (granja.Insertar(gran))
-                {
-                    return RedirectToAction(nameof(Index));
-                }
-                else
-                {
-                    return RedirectToAction(nameof(Index));
-                }
+                
+                return RedirectToAction(nameof(Index));
+                
 
             }
             catch
@@ -56,8 +50,8 @@ namespace Sistema3SS_2020.Controllers
         // GET: GranjaController/Edit/5
         public ActionResult Edit(int id)
         {
-            var gran = granja.consultarInfoPorId(id);
-            return View(gran);
+            
+            return View();
         }
 
         // POST: GranjaController/Edit/5
@@ -67,13 +61,6 @@ namespace Sistema3SS_2020.Controllers
         {
             try
             {
-                var r = keyValues;
-                var UsuOrd = OrdenarColeccion(r);
-                var seActualizo = granja.actualizar(UsuOrd);
-                if (seActualizo)
-                {
-                    return RedirectToAction(nameof(Index));
-                }
                 return RedirectToAction(nameof(Index));
             }
             catch
@@ -102,19 +89,6 @@ namespace Sistema3SS_2020.Controllers
                 return View();
             }
         }
-        private Granja OrdenarColeccion(IFormCollection collection)
-        {
-            this.granja.id = Convert.ToInt32(collection["id"]);
-            this.granja.nombre = collection["nombre"].ToString();
-            this.granja.ubicacion = collection["ubicacion"].ToString();
-            this.granja.nombre_responsable = collection["nombre_responsable"].ToString();
-            this.granja.apellido_materno_responsable = collection["apellido_materno_responsable"].ToString();
-            this.granja.apellido_paterno_responsable = collection["apellido_paterno_responsable"].ToString();
-            this.granja.numero_estanques = Convert.ToInt32(collection["numero_estanques"]);
-            this.granja.perimetro_hetareas = Convert.ToDouble(collection["perimetro_hetareas"].ToString());
-            return this.granja;
 
-
-        }
     }
 }
